@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1a3c6e">
+<title>ImportDesk — полная версия</title>
+<style>
+:root{--bg:#f3f4f8;--card:#ffffff;--text:#1d2433;--dim:#5b6475;--border:#d9dde6;--accent:#663af3;--on-accent:#ffffff;--bad:#b42318}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14161c;--card:#1d2029;--text:#e8eaf0;--dim:#9aa3b5;--border:#333847;--accent:#8b6cff;--on-accent:#ffffff;--bad:#ff8a80}}
+:root[data-theme="dark"]{--bg:#14161c;--card:#1d2029;--text:#e8eaf0;--dim:#9aa3b5;--border:#333847;--accent:#8b6cff;--on-accent:#ffffff;--bad:#ff8a80}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px;background:var(--bg);color:var(--text);
+  font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding-top:max(16px,env(safe-area-inset-top))}
+.card{width:100%;max-width:380px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px}
+h1{font-size:1.2rem;margin:0 0 4px}
+.dim{color:var(--dim);font-size:.88rem;margin:4px 0 14px}
+input[type=password]{width:100%;font-size:16px;padding:11px 12px;border:1.5px solid var(--border);border-radius:10px;background:var(--card);color:var(--text)}
+label.rem{display:flex;gap:8px;align-items:center;margin:10px 0;font-size:.9rem;color:var(--dim)}
+button{width:100%;font-size:16px;padding:12px;border:0;border-radius:999px;background:var(--accent);color:var(--on-accent);font-weight:600;cursor:pointer}
+button:disabled{opacity:.6}
+.msg{min-height:1.4em;color:var(--bad);font-size:.9rem;margin:10px 0 0}
+.foot{color:var(--dim);font-size:.8rem;margin:14px 0 0}
+.foot a{color:inherit}
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>ImportDesk · полная версия</h1>
+  <p class="dim" id="age">Все листы программы — только для просмотра.</p>
+  <form id="f" autocomplete="on">
+    <input type="password" id="pw" autocomplete="current-password" placeholder="Пароль телефона" aria-label="Пароль телефона">
+    <label class="rem"><input type="checkbox" id="rem" checked> запомнить на этом устройстве</label>
+    <button type="submit" id="go" title="Открыть программу с данными с сайта (только просмотр)">Открыть</button>
+  </form>
+  <p class="msg" id="msg" role="alert"></p>
+  <p class="foot">Изменения в полной версии никуда не сохраняются. Склад и накладные с телефона — <a href="../m/">телефонная версия</a>.</p>
+</div>
+<script id="web-crypt">
+// ===== 🔐 WEB-CRYPT — шифрование выкладки в интернет (эталон; копии в weltklasse_kp.html и weltklasse_mobile.html сверяет tests/web_crypt.test.js) =====
+// Конверт: {app:'weltklasse-web', v:1, kind:'staff'|'phone'|'off', savedAt, salt:b64(16), iv:b64(12), iter, data:b64(AES-GCM(gzip(JSON)))}; у 'off' — без salt/iv/data.
+// Ключ — PBKDF2-SHA-256 из пароля, WEB_ITER повторов. Ошибки — Error с code: BAD_PASSWORD · BAD_FORMAT · OFF.
+const WEB_ITER=250000;
+function webCryptOk(){ try{ return !!(globalThis.crypto&&crypto.subtle&&crypto.getRandomValues&&typeof CompressionStream==='function'&&typeof DecompressionStream==='function'&&typeof TextEncoder==='function'); }catch(e){ return false; } }
+function _webErr(code){ const e=new Error(code); e.code=code; return e; }
+function _webB64(u8){ let s=''; for(let i=0;i<u8.length;i+=0x8000) s+=String.fromCharCode.apply(null,u8.subarray(i,i+0x8000)); return btoa(s); }
+function _webUnB64(s){ if(typeof s!=='string'||!/^[A-Za-z0-9+/]*={0,2}$/.test(s)) throw _webErr('BAD_FORMAT');
+  let b; try{ b=atob(s); }catch(e){ throw _webErr('BAD_FORMAT'); } const u=new Uint8Array(b.length); for(let i=0;i<b.length;i++) u[i]=b.charCodeAt(i); return u; }
+async function _webPipe(u8,stream){ return new Uint8Array(await new Response(new Blob([u8]).stream().pipeThrough(stream)).arrayBuffer()); }
+async function _webKey(password,salt,iter){
+  const base=await crypto.subtle.importKey('raw',new TextEncoder().encode(String(password||'')),'PBKDF2',false,['deriveKey']);
+  return crypto.subtle.deriveKey({name:'PBKDF2',hash:'SHA-256',salt,iterations:iter},base,{name:'AES-GCM',length:256},false,['encrypt','decrypt']);
+}
+async function webSeal(obj,password,kind){
+  if(!['staff','phone','off'].includes(kind)) throw _webErr('BAD_FORMAT');
+  const env={app:'weltklasse-web',v:1,kind,savedAt:new Date().toISOString()};
+  if(kind==='off') return env;
+  const salt=crypto.getRandomValues(new Uint8Array(16)), iv=crypto.getRandomValues(new Uint8Array(12));
+  const gz=await _webPipe(new TextEncoder().encode(JSON.stringify(obj)),new CompressionStream('gzip'));
+  const ct=new Uint8Array(await crypto.subtle.encrypt({name:'AES-GCM',iv},await _webKey(password,salt,WEB_ITER),gz));
+  return Object.assign(env,{salt:_webB64(salt),iv:_webB64(iv),iter:WEB_ITER,data:_webB64(ct)});
+}
+async function webOpen(env,password){
+  if(!env||typeof env!=='object'||env.app!=='weltklasse-web'||env.v!==1) throw _webErr('BAD_FORMAT');
+  if(env.kind==='off') throw _webErr('OFF');
+  if(!['staff','phone'].includes(env.kind)||!Number.isInteger(env.iter)||env.iter<1||typeof env.data!=='string') throw _webErr('BAD_FORMAT');
+  const salt=_webUnB64(env.salt), iv=_webUnB64(env.iv), ct=_webUnB64(env.data);
+  if(salt.length!==16||iv.length!==12||ct.length<17) throw _webErr('BAD_FORMAT');
+  let gz; try{ gz=new Uint8Array(await crypto.subtle.decrypt({name:'AES-GCM',iv},await _webKey(password,salt,env.iter),ct)); }catch(e){ throw _webErr('BAD_PASSWORD'); }
+  try{ return JSON.parse(new TextDecoder().decode(await _webPipe(gz,new DecompressionStream('gzip')))); }catch(e){ throw _webErr('BAD_FORMAT'); }
+}
+// ===== /WEB-CRYPT =====
+</script>
+<script id="app-load">
+// Загрузчик полной программы на сайте (app/index.html): пароль телефона → data/full.json (конверт kind:'full', webOpen) →
+// wk_* в localStorage этого браузера → weltklasse_kp.html?view=1 (режим просмотра). Пароль — тот же, что у телефонной
+// версии, и запоминается там же (wkm_web_pw: сайт один, хранилище браузера общее).
+const APP_KEEP=['wk_theme'];   // вид этого браузера — не данные, не стирается
+// ЧИСТАЯ (кроме переданного хранилища): снимок {app:'weltklasse', savedAt, data:{wk_*:строка}} → st. Прежние wk_* (кроме APP_KEEP) стираются,
+// wk_web и wk_undostack не пишутся; не хватило места — записанное стирается. → {ok:true, n} | {ok:false, err:'FORMAT'|'QUOTA'}
+function appFullApply(snap,st){
+  if(!snap||snap.app!=='weltklasse'||!snap.data||typeof snap.data!=='object') return {ok:false,err:'FORMAT'};
+  const old=[]; for(let i=0;i<st.length;i++){ const k=st.key(i); if(k&&k.indexOf('wk_')===0&&APP_KEEP.indexOf(k)<0) old.push(k); }
+  old.forEach(k=>st.removeItem(k));
+  let n=0; const put=[];
+  try{
+    Object.keys(snap.data).forEach(k=>{ if(k.indexOf('wk_')!==0||k==='wk_web'||k==='wk_undostack') return;
+      const v=snap.data[k]; put.push(k); st.setItem(k,typeof v==='string'?v:JSON.stringify(v)); n++; });
+    st.setItem('wka_at',String(snap.savedAt||''));
+  }catch(e){ put.forEach(k=>{ try{ st.removeItem(k); }catch(x){} }); try{ st.removeItem('wka_at'); }catch(x){}   // частичный снимок не оставлять
+    return {ok:false,err:'QUOTA'}; }
+  return {ok:true,n};
+}
+const APP_ERR={NO_DATA:'Данных ещё нет — владелец включает выкладку в ImportDesk.',NET:'Нет связи — проверьте интернет и нажмите «Открыть» ещё раз.',
+  BAD_PASSWORD:'Пароль не подошёл.',OFF:'Владелец выключил доступ.',BAD_FORMAT:'Файл данных повреждён.',FORMAT:'Файл данных не от этой программы.',
+  QUOTA:'Не хватило места в браузере — данные не загружены.',OLD:'Браузер устарел — откройте в свежем Safari или Chrome.'};
+// Открыть конверт data/full.json: программа запечатывает его как phone и помечает full (webSealFull) — эталонный web-crypt
+// иного вида не знает. → Promise<снимок>; ошибки — как у webOpen (BAD_PASSWORD | BAD_FORMAT | OFF).
+function appOpenEnv(env,pw){ return webOpen(env&&env.kind==='full'?Object.assign({},env,{kind:'phone'}):env,pw); }
+async function appFetch(){
+  let r; try{ r=await fetch('../data/full.json?t='+Date.now(),{cache:'no-store'}); }catch(e){ return {err:'NET'}; }
+  if(r.status===404) return {err:'NO_DATA'};
+  if(!r.ok) return {err:'NET'};
+  try{ return {env:await r.json()}; }catch(e){ return {err:'BAD_FORMAT'}; }
+}
+// Открыть: пароль → данные → программа. saved — пароль подставлен из запомненного (не подошёл — забыть).
+async function appOpen(pw,remember,saved){
+  if(typeof webCryptOk==='function'&&!webCryptOk()) return {err:'OLD'};
+  const f=await appFetch(); if(f.err) return f;
+  let snap; try{ snap=await appOpenEnv(f.env,pw); }catch(e){
+    const c=(e&&e.code)||'BAD_FORMAT';
+    if(c==='BAD_PASSWORD'&&saved){ try{ localStorage.removeItem('wkm_web_pw'); }catch(x){} }
+    return {err:c}; }
+  const r=appFullApply(snap,localStorage); if(!r.ok) return {err:r.err};
+  try{ if(remember) localStorage.setItem('wkm_web_pw',pw); }catch(e){}
+  location.replace('weltklasse_kp.html?view=1'+(location.hash||''));
+  return {ok:true};
+}
+</script>
+<script>
+(function(){
+  const $=id=>document.getElementById(id), msg=t=>{ $('msg').textContent=t||''; };
+  const z=x=>String(x).padStart(2,'0');
+  let saved=''; try{ saved=localStorage.getItem('wkm_web_pw')||''; }catch(e){}
+  async function go(pw,isSaved){
+    $('go').disabled=true; msg(''); $('go').textContent='Открываю…';
+    const r=await appOpen(pw,$('rem').checked,isSaved);
+    if(!r.ok){ $('go').disabled=false; $('go').textContent='Открыть'; msg(APP_ERR[r.err]||('Не открылось: '+r.err)); }
+  }
+  $('f').addEventListener('submit',e=>{ e.preventDefault(); const pw=$('pw').value||saved; if(!pw){ msg('Впишите пароль телефона.'); return; } go(pw,!$('pw').value&&!!saved); });
+  appFetch().then(f=>{ if(f.env&&f.env.savedAt){ const d=new Date(f.env.savedAt);
+    if(!isNaN(d)) $('age').textContent='Данные на '+z(d.getDate())+'.'+z(d.getMonth()+1)+' '+z(d.getHours())+':'+z(d.getMinutes())+(f.env.kind==='off'?' — владелец выключил доступ':'')+'. Только просмотр.'; } });
+  if(saved){ $('pw').placeholder='пароль запомнен — нажмите «Открыть»'; if(/^https?:$/.test(location.protocol)) go(saved,true); }
+})();
+</script>
+</body>
+</html>

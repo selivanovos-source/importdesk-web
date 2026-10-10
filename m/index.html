@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="ImportDesk">
+<meta name="theme-color" content="#ffffff">
+<meta name="format-detection" content="telephone=no">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACXElEQVR42u3bSxXCMBCG0ZpgxQIfiEAYelCAJ9ZggBVpyT+Tm/MJmMI90Ee6XW4P6Wubj0BwCA7BITgEh+AQHIJDcAgOCQ7BITgEh+AQHIJDcAgOwSEti+P1PP8cHHDAAQcccMABBxxwwAEHHHDAAQcccMABBxxwwAEHHHDAAQcccMABBxxwwAEHHHDAAQcccMABBxxwwAEHHHDAAQcccMABBxxwwAEHHHDAAQcccMABBxxwwAEHHHDUxfGOWSM4co4CDjjggAMOOOCAAw444IADDjjggAMOOOCAAw444IADDjjggAMOOOCAY7TT9R7SCI6co4ADDjjggAMOONJPUSuekC63+xwOOOCAAw444IADDjjggAMOOOCAAw444Nj3e40KjkN+ORaUAccqPvytHH7OsZQMOPr7cEL616uVRWTA0dmHS9lp9znay4Cjpw83wSLukDaWAUc3H26fxz1baSkDjj4+PHiLfirbTAYcHXx4ZF9mP0cbGXDU9mGzT8mdYA1kwFHVh22C5feQlpYBRz0fNhi32n1eVAYclXx4NcF7K0GvrsBRwMesgeFI9zFxWjiifcwdFY5cH9PnhCPUR8KQcCT6CJkQjjgfOePBkeUjajY4gnykDQZHio/AqeCw4IADDjjggAMOOOCAAw444IADDjjggAMOOCw4fOVwwAEHHHDAAQcccMABBxxwwAEHHHDAYcFhwQEHHHDAAQcccMABBxxwwFEEh/KDQ3AIDsEhOASH4BAcgkNwCA4JDsEhOASH4BAcgkNwCA7BIcEhOASH4BAcgkNwCA616wO1ZVgDVtdM3AAAAABJRU5ErkJggg==">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACXElEQVR42u3bSxXCMBCG0ZpgxQIfiEAYelCAJ9ZggBVpyT+Tm/MJmMI90Ee6XW4P6Wubj0BwCA7BITgEh+AQHIJDcAgOCQ7BITgEh+AQHIJDcAgOwSEti+P1PP8cHHDAAQcccMABBxxwwAEHHHDAAQcccMABBxxwwAEHHHDAAQcccMABBxxwwAEHHHDAAQcccMABBxxwwAEHHHDAAQcccMABBxxwwAEHHHDAAQcccMABBxxwwAEHHHDUxfGOWSM4co4CDjjggAMOOOCAAw444IADDjjggAMOOOCAAw444IADDjjggAMOOOCAY7TT9R7SCI6co4ADDjjggAMOONJPUSuekC63+xwOOOCAAw444IADDjjggAMOOOCAAw444Nj3e40KjkN+ORaUAccqPvytHH7OsZQMOPr7cEL616uVRWTA0dmHS9lp9znay4Cjpw83wSLukDaWAUc3H26fxz1baSkDjj4+PHiLfirbTAYcHXx4ZF9mP0cbGXDU9mGzT8mdYA1kwFHVh22C5feQlpYBRz0fNhi32n1eVAYclXx4NcF7K0GvrsBRwMesgeFI9zFxWjiifcwdFY5cH9PnhCPUR8KQcCT6CJkQjjgfOePBkeUjajY4gnykDQZHio/AqeCw4IADDjjggAMOOOCAAw444IADDjjggAMOOCw4fOVwwAEHHHDAAQcccMABBxxwwAEHHHDAYcFhwQEHHHDAAQcccMABBxxwwFEEh/KDQ3AIDsEhOASH4BAcgkNwCA4JDsEhOASH4BAcgkNwCA7BIcEhOASH4BAcgkNwCA616wO1ZVgDVtdM3AAAAABJRU5ErkJggg==">
+<title>ImportDesk — телефон</title>
+<style>
+:root{
+  --bg:#f7f9fc; --surface:#ffffff; --surface-2:#eef2f7; --border:rgba(7,23,57,.12); --border-strong:rgba(7,23,57,.24);
+  --head:#071739; --text:#16233c; --text-dim:#4b6382; --text-help:#7c8798; --accent:#663af3; --on-accent:#ffffff;
+  --ok:#C6EFCE; --ok-text:#006100; --alert:#fde8e8; --alert-text:#9C0006; --alert-border:#f0b0b0;
+  --soft:#F6F0E6; --soft-text:#8A6A45; --soft-border:#D8C3A5; --shade:rgba(7,23,57,.35);
+  --toast:#16233c; --on-toast:#ffffff; --r:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{max-width:100%;overflow-x:hidden}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{font-family:'Segoe UI',system-ui,-apple-system,Arial,sans-serif;background:var(--bg);color:var(--text);
+  font-size:15px;line-height:1.35;padding-bottom:calc(70px + env(safe-area-inset-bottom))}
+header{position:sticky;top:0;z-index:30;display:flex;align-items:center;gap:10px;background:var(--surface);
+  border-bottom:1px solid var(--border);padding:10px 12px;padding-top:calc(10px + env(safe-area-inset-top));
+  padding-left:calc(12px + env(safe-area-inset-left));padding-right:calc(12px + env(safe-area-inset-right))}
+.burger{flex:none;width:42px;height:42px;border:1px solid var(--border-strong);border-radius:12px;background:var(--surface-2);
+  color:var(--head);font-size:1.3rem;cursor:pointer}
+.hdr-t{min-width:0;flex:1}
+.hdr-t b{display:block;font-size:1.05rem;color:var(--head)}
+#data-info{display:inline-block;font-size:.74rem;color:var(--text-dim);border-radius:6px;padding:1px 6px;max-width:100%;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#data-info.old{background:var(--soft);color:var(--soft-text);border:1px solid var(--soft-border)}
+#side{position:fixed;top:0;left:0;bottom:0;width:250px;max-width:80vw;z-index:50;background:var(--surface);
+  border-right:1px solid var(--border);padding:calc(14px + env(safe-area-inset-top)) 10px calc(14px + env(safe-area-inset-bottom)) calc(10px + env(safe-area-inset-left));overflow-y:auto;
+  transform:translateX(-105%);transition:transform .25s ease}
+body.side-open #side{transform:translateX(0)}
+#shade{position:fixed;inset:0;z-index:40;background:var(--shade);opacity:0;pointer-events:none;transition:opacity .25s}
+body.side-open #shade{opacity:1;pointer-events:auto}
+#side .brand{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--head);padding:0 2px 12px}
+#side button[data-page]{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:0;background:none;color:var(--text);
+  font-size:1rem;padding:12px 12px;border-radius:12px;cursor:pointer;margin-bottom:4px}
+#side button[data-page].on{background:var(--surface-2);color:var(--head);font-weight:700}
+#side .cnt{margin-left:auto;font-size:.75rem;background:var(--alert);color:var(--alert-text);border-radius:999px;padding:1px 8px}
+main{padding:12px;padding-left:calc(12px + env(safe-area-inset-left));padding-right:calc(12px + env(safe-area-inset-right))}
+#store-warn{display:none;margin:10px 12px 0;padding:10px 12px;border-radius:var(--r);background:var(--alert);color:var(--alert-text);
+  border:1px solid var(--alert-border);font-weight:600;font-size:.9rem}
+body.no-store #store-warn{display:block}
+.page{display:none}.page.on{display:block}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:12px;margin-bottom:10px;min-width:0}
+.card h3{font-size:.98rem;color:var(--head);margin-bottom:8px}
+.muted{color:var(--text-dim);font-size:.82rem}
+.help{color:var(--text-help);font-size:.8rem}
+input,select,textarea{font-size:16px;font-family:inherit;color:var(--text);background:var(--surface);border:1px solid var(--border-strong);
+  border-radius:6px;padding:9px 10px;min-width:0;max-width:100%}
+input[type=number]{width:74px}
+input[type=checkbox]{width:20px;height:20px;padding:0;vertical-align:middle;margin-right:4px}
+.full{width:100%}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;min-width:0}
+.row+.row{margin-top:8px}
+button.btn,a.btn{display:inline-block;text-decoration:none;font-size:.95rem;font-family:inherit;border:1px solid var(--border-strong);background:var(--surface-2);color:var(--head);
+  border-radius:999px;padding:9px 14px;cursor:pointer;white-space:nowrap}
+button.btn.main{background:var(--accent);border-color:var(--accent);color:var(--on-accent);font-weight:600}
+button.btn:disabled{opacity:.45;cursor:default}
+button.ico{border:1px solid var(--border);background:var(--surface);border-radius:9999px;width:36px;height:36px;font-size:1rem;cursor:pointer;flex:none}
+.it-h{display:flex;justify-content:space-between;gap:8px;font-size:.8rem;color:var(--text-dim)}
+.it-a{font-weight:700;color:var(--head);word-break:break-all}
+.it-n{font-size:.88rem;margin:2px 0 6px;overflow-wrap:anywhere}
+.qtys{font-size:.85rem}
+.qtys b{color:var(--head)}
+.tag{display:inline-block;font-size:.72rem;border-radius:6px;padding:1px 6px;background:var(--surface-2);color:var(--text-dim)}
+.tag.soft{background:var(--soft);color:var(--soft-text);border:1px solid var(--soft-border)}
+.tag.alert{background:var(--alert);color:var(--alert-text);border:1px solid var(--alert-border)}
+.empty{text-align:center;padding:30px 14px}
+.empty p{margin-bottom:14px;color:var(--text-dim)}
+.wl{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-top:1px solid var(--border);font-size:.86rem}
+.wl:first-of-type{border-top:0}
+.wl .l{min-width:0;overflow-wrap:anywhere}
+.wl .r{white-space:nowrap;text-align:right}
+.tot{display:flex;justify-content:space-between;font-weight:700;color:var(--head);border-top:1px solid var(--border-strong);padding-top:8px;margin-top:4px}
+.kp-r{border-top:1px solid var(--border);padding:8px 0}
+.kp-r:first-child{border-top:0}
+input.manual{background:var(--soft);font-weight:600;border-color:var(--soft-border)}
+.res button{display:block;width:100%;text-align:left;border:0;border-top:1px solid var(--border);background:none;padding:9px 4px;font-size:.9rem;color:var(--text);cursor:pointer}
+.op{display:flex;gap:8px;align-items:flex-start;border-top:1px solid var(--border);padding:8px 0}
+.op:first-child{border-top:0}
+.op .t{flex:1;min-width:0;font-size:.86rem;overflow-wrap:anywhere}
+.op.bad .t{color:var(--alert-text)}
+#side .sep{font-size:.72rem;color:var(--text-help);text-transform:uppercase;letter-spacing:.04em;padding:10px 12px 4px;border-top:1px solid var(--border);margin-top:6px}
+.tag.ok{background:var(--ok);color:var(--ok-text)}
+.tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.tabs button{font-size:.85rem;font-family:inherit;border:1px solid var(--border-strong);background:var(--surface);color:var(--text);border-radius:999px;padding:6px 12px;cursor:pointer}
+.tabs button.on{background:var(--head);border-color:var(--head);color:var(--on-accent);font-weight:600}
+.tap{cursor:pointer}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:4px 0 8px}
+.tile{background:var(--surface-2);border-radius:12px;padding:8px 4px;text-align:center;min-width:0}
+.tile .n{font-weight:700;color:var(--head);font-size:.95rem;overflow-wrap:anywhere}
+.tile .l{font-size:.7rem;color:var(--text-dim);line-height:1.2}
+.wl.rp .r{white-space:normal;overflow-wrap:anywhere;max-width:65%}
+.mv-top{display:flex;justify-content:flex-end;margin-bottom:8px}
+details summary{cursor:pointer;font-weight:700;color:var(--head);font-size:.98rem}
+#toast{position:fixed;left:50%;bottom:calc(18px + env(safe-area-inset-bottom));transform:translateX(-50%) translateY(20px);
+  z-index:60;max-width:calc(100vw - 32px);background:var(--toast);color:var(--on-toast);padding:10px 14px;border-radius:12px;
+  font-size:.9rem;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+<nav id="side" aria-label="Листы">
+  <div class="brand"><button class="burger" onclick="sideToggle(false)" title="Убрать список листов">☰</button> ImportDesk · телефон</div>
+  <button data-page="stock" onclick="go('stock')" title="Остатки, отгрузка, возврат, рекламация, замена">🏬 Склад</button>
+  <button data-page="wb" onclick="go('wb')" title="Накладные с телефона и последние с компьютера">🧾 Накладные</button>
+  <button data-page="kp" onclick="go('kp')" title="Составить КП с ценами">📊 КП</button>
+  <button data-page="sync" onclick="go('sync')" title="Загрузить данные с компьютера и выгрузить изменения">🔄 Обмен <span class="cnt" id="ops-cnt" style="display:none"></span></button>
+  <div class="sep">Просмотр</div>
+  <button data-page="pj" onclick="MV.pid='';go('pj')" title="Проекты: договоры, ДОП, оплаты, сводка Хаба и позиции">📁 Проекты / Хаб</button>
+  <button data-page="fin" onclick="go('fin')" title="Оплаты заказчиков, оплаты производителю, растаможка по машинам">💰 Финансы и оплаты</button>
+  <button data-page="inv" onclick="go('inv')" title="Инвойсы производителя и поставки по машинам">📦 Инвойсы и поставки</button>
+  <button data-page="rep" onclick="go('rep')" title="Отчёты программы — карточками, с поиском">📈 Отчёты</button>
+</nav>
+<div id="shade" onclick="sideToggle(false)"></div>
+<header>
+  <button class="burger" onclick="sideToggle()" title="Показать или убрать список листов">☰</button>
+  <div class="hdr-t"><b id="page-title">🏬 Склад</b><span id="data-info">данных нет</span></div>
+</header>
+<div id="store-warn">⚠ Правки не сохранятся после закрытия — выгрузите изменения до закрытия (браузер не даёт программе хранить данные)</div>
+<main>
+  <section class="page" id="page-stock"></section>
+  <section class="page" id="page-wb"></section>
+  <section class="page" id="page-kp"></section>
+  <section class="page" id="page-sync"></section>
+  <section class="page" id="page-pj"></section>
+  <section class="page" id="page-fin"></section>
+  <section class="page" id="page-inv"></section>
+  <section class="page" id="page-rep"></section>
+</main>
+<input type="file" id="file-in" accept=".json,application/json" style="display:none" onchange="loadFile(this)">
+<div id="toast"></div>
+
+<script id="mob-core">
+// ===== Ядро телефона: без обращений к странице. Экран = mobApply(база, журнал). =====
+// Правила скопированы с компьютера (weltklasse_kp.html): whIssue, whReturnCore, whReclaim, _swapCheck/whSwap,
+// _wbFor/_wbAutoNum, wbKpPrice/kpUnitPriceUzs, calcRsRowPrices (+ _rsTotals, _kpPe). Совпадение цены держит
+// tests/mobile_price.test.js, журнал — tests/mobile_apply.test.js.
+let MOB_CAT=[], TNVED_DUTY_MAP={}, MOB_DEFK={}, _catIdx=null;
+// Псевдонимы артикулов — копия ART_ALIASES компьютера: поставщик сменил номер, оба номера = один товар
+const ART_ALIASES={
+  '68100001':'68360001'   // Closable valve with ceramic cover (V&B сменили номер, batch 114366)
+};
+function artKey(a){
+  let s=String(a||'').toUpperCase().trim();
+  const cyr='АВСЕНКМОРТХУ', lat='ABCEHKMOPTXY';
+  s=s.split('').map(ch=>{const i=cyr.indexOf(ch);return i>=0?lat[i]:ch;}).join('');
+  s=s.replace(/O/g,'0');
+  return ART_ALIASES[s]||s;
+}
+function mobSetCatalog(cat,duty,defK){ MOB_CAT=Array.isArray(cat)?cat:[]; TNVED_DUTY_MAP=duty||{}; MOB_DEFK=defK||{}; _catIdx=null; }
+function findItem(art){
+  if(!_catIdx){ const m=new Map(); MOB_CAT.forEach(i=>{ const a=String(i.article||'').trim().toLowerCase(); if(!m.has(a)) m.set(a,i); }); _catIdx=m; }
+  return _catIdx.get(String(art||'').trim().toLowerCase());
+}
+function _whHomeIn(projs){ return (projs||[]).find(p=>/weltklasse[\s_\-]*wh/i.test(p.name||'')); }   // свободный сток среди переданных проектов
+// Строка склада действия — правило _phoneWhRow компьютера: по whId, иначе проект+артикул, сначала не rek и не «нал»
+function _phoneWhRow(whs,whId,projectId,article){
+  const live=(whs||[]).filter(w=>!w.virtual&&!w.rkg);
+  if(whId){ const r=live.find(w=>w.id===whId); if(r) return r; }
+  const k=artKey(article||''); if(!k) return null;
+  const c=live.filter(w=>w.projectId===projectId&&artKey(w.article||'')===k);
+  return c.find(w=>!w.rek&&!w.cash)||c[0]||null;
+}
+function _todayISO(){ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }   // местная дата (toISOString — UTC: в Ташкенте до 05:00 давал вчера)
+// № накладной по дате — копия _wbAutoNum компьютера; список накладных передаётся явно
+function _wbAutoNum(wb,waybills){
+  const ymd=_wbYmd(wb.date)||_wbYmd(_todayISO());
+  const base=({rek:'Р ',ret:'В '}[wb.type||'']||'Н ')+ymd;   // «В» — документ возврата
+  const used=new Set(waybills.filter(w=>w.id!==wb.id).map(w=>String(w.number||'').trim()));
+  let n=base, k=1; while(used.has(n)){ k++; n=base+'/'+k; }
+  return n;
+}
+function isWarehouse(p){ return p.projType==='warehouse'||p.projType==='internal'; }
+function _rsTotals(rows){
+  // EUR-цена закупки берётся ЖИВО из каталога (как вес/ТН ВЭД); row.priceEur — фолбэк для артикулов вне каталога
+  const totalWt=rows.reduce((s,r)=>{const it=findItem(r.article)||{};return s+(parseFloat(it.weight)||0)*(r.qty||1);},0);
+  const totalEur=rows.reduce((s,r)=>s+_kpPe(r)*(r.qty||1),0);
+  return {totalWt,totalEur};
+}
+function calcRsRowPrices(row, rows, k, tot) {
+  // Точно те же формулы что в renderRaschet (эталон _PO)
+  const kursRast=k.kursRast||(k.kursKonv||14240)-40;
+  const kursKonv=k.kursKonv||14240;
+  const ndsRate=(k.nds||12)/100;
+  const marzha=k.marzha??20.5;
+  const _pe=_kpPe;
+  const {totalWt,totalEur}=tot||_rsTotals(rows);   // tot — готовые итоги проекта, иначе считаем здесь
+  const item=findItem(row.article)||{};
+  const duty=parseFloat(item.duty)||((TNVED_DUTY_MAP[item.tnved]||0)/100)||0;
+  const qty=row.qty||1;
+  const prEur=_pe(row);
+  const rowWt=qty*(parseFloat(item.weight)||0);
+  const rowEur=prEur*qty;
+  const wSh=totalWt>0?rowWt/totalWt:(totalEur>0?rowEur/totalEur:0);
+  const c14=rowEur*kursRast;
+  const c15=totalEur*(kursKonv-kursRast)*wSh;
+  const c16=(k.transport||0)*wSh;
+  const c16cif=k.frahtEur>0?(k.frahtEur*kursRast)*wSh:c16;
+  const c17=(c14+c16cif)*duty;
+  const c19=(k.tamSbor||0)*wSh;
+  const c20=(k.tamSklad||0)*wSh;
+  const c21=(k.pismo||0)*wSh;
+  const c22=(k.deklarant||0)*wSh;
+  const c23=((k.kommKonv||0)+(k.kommPer||0)+(k.kommObsl||0))*wSh;
+  const c24=(k.razgruzka||0)*wSh;
+  const c25=((k.arendaSklad||0)+(k.arendaOfis||0))*wSh;
+  const c26=(k.reklama||0)*wSh;
+  const c27=(k.fot||0)*wSh;
+  const c28=c14+c15+c16+c17+c19+c20+c21+c22+c23+c24+c25+c26+c27;
+  const c29=qty>0?Math.round(c28/qty):0;
+  const c31=marzha<100?Math.round(c29/(1-marzha/100)/1000)*1000:c29;
+  const c32=c31*ndsRate;   // как на листе Расчёт (без округления) — итоги совпадают
+  const c33=c31+c32;
+  // Ручной override цены с НДС (UZS): из неё выводим без-НДС и НДС, итог = цена*кол-во
+  const hasManual = row.priceManual!=null && row.priceManual!=='' && !isNaN(row.priceManual) && (+row.priceManual)>0;
+  if(hasManual){
+    const sNds=Math.round(+row.priceManual);
+    const bezNds=Math.round(sNds/(1+ndsRate));
+    return {bezNds, nds:sNds-bezNds, sNds, total:sNds*qty, manual:true};
+  }
+  return {bezNds:c31, nds:c32, sNds:c33, total:c33*qty, manual:false};
+}
+function _kpPe(r){ const it=findItem(r.article); const v=(it&&it.price_eur!=null&&it.price_eur!=='')?parseFloat(it.price_eur):NaN; return !isNaN(v)?v:(parseFloat(r.priceEur)||0); }
+// Константы проекта — как их считает лист КП компьютера: копия его _projKonstEff (сверяется тестом tests/mobile_price.test.js).
+// Недостающее берётся из констант по умолчанию файла данных (MOB_DEFK = DEFAULT_KONST компьютера), производные пересчитываются
+// (кроме konstOverride), комиссия конвертации — по текущим строкам КП. Проект не меняется.
+const _KONST_MAP={'k-kurs-konv':'kursKonv','k-kurs-oplata':'kursOplata','k-kurs-rast':'kursRast','k-brv':'brv',
+  'k-fur-cnt':'furCnt','k-fur-eur':'furEur','k-transport':'transport','k-razgruzka':'razgruzka','k-fraht-eur':'frahtEur',
+  'k-marzha':'marzha','k-nds':'nds','k-reklama':'reklama','k-fot':'fot','k-tam-sbor':'tamSbor','k-tam-sklad':'tamSklad',
+  'k-pismo':'pismo','k-deklarant':'deklarant','k-komm-konv':'kommKonv','k-komm-per':'kommPer','k-komm-obsl':'kommObsl',
+  'k-arenda-sklad':'arendaSklad','k-arenda-ofis':'arendaOfis'};
+const _KONST_UZS=['brv','transport','razgruzka','reklama','fot','tamSbor','tamSklad','pismo','deklarant','kommKonv','kommPer','kommObsl','arendaSklad','arendaOfis'];
+function fmtK(n){if(!n&&n!==0)return'0';return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ');}
+function projKonst(proj){
+  proj=proj||{}; const D=MOB_DEFK||{};
+  const src=(proj.konst&&Object.keys(proj.konst).length)?proj.konst:D, ov=proj.konstOverride||{}, f={};
+  Object.entries(_KONST_MAP).forEach(([id,key])=>{ let val=src[key]; if(val==null) val=D[key];
+    f[id]=(id==='k-fur-eur'||id==='k-fraht-eur')?((val==null||val===0)?'':String(val)):_KONST_UZS.includes(key)?fmtK(val):String(val); });
+  const v=id=>parseFloat(String(f[id]||'').replace(/\s/g,''))||0;
+  const set=(id,val)=>{ if(!ov[id]) f[id]=fmtK(val); }, setN=(id,val)=>{ if(!ov[id]) f[id]=String(val); };
+  const konv=v('k-kurs-konv'), brv=v('k-brv'), furCnt=v('k-fur-cnt')||1, furEur=v('k-fur-eur');
+  const oplata=konv-140, rast=oplata+100;
+  setN('k-kurs-oplata',oplata); setN('k-kurs-rast',rast);
+  set('k-transport',furCnt*furEur*rast); set('k-tam-sbor',brv*8*furCnt); set('k-tam-sklad',168000*3*furCnt);
+  set('k-pismo',1750000*furCnt); set('k-deklarant',brv*7*furCnt); set('k-komm-per',212500*furCnt);
+  set('k-komm-obsl',brv*furCnt); set('k-razgruzka',2800000*furCnt); set('k-arenda-sklad',7250000*furCnt);
+  set('k-arenda-ofis',5200000*furCnt);
+  const totalEur=(proj.kpRows||[]).reduce((s,r)=>s+(r.priceEur||0)*(r.qty||1),0);
+  if(totalEur>0) set('k-komm-konv',totalEur*oplata*0.0015*furCnt);
+  const k={}; Object.entries(_KONST_MAP).forEach(([id,key])=>{ k[key]=v(id); }); return k;
+}
+function kpUnitPriceUzs(proj,article){
+  const rowsA=(proj.kpRows||[]).filter(r=>artKey(r.article||'')===artKey(article||''));
+  if(!rowsA.length) return 0;
+  const k=projKonst(proj);   // как kpUnitPriceUzs компьютера (_lcProjK = _projKonstEff; цену накладной пишет он)
+  const q=rowsA.reduce((s,r)=>s+(r.qty||1),0);
+  const t=rowsA.reduce((s,r)=>s+(((calcRsRowPrices(r,proj.kpRows,k)||{}).total)||0),0);
+  return q>0?t/q:0;
+}
+// Цена накладной — правило wbKpPrice компьютера: КП зафиксировано и артикул в КП → цена за шт с НДС;
+// иначе последняя цена > 0 из истории КП (без замен); иначе null — «без цены»
+function wbKpPrice(proj,article){
+  if(!proj||!(proj.kpFixed&&proj.kpFixed.fixed)) return null;
+  const k=artKey(article||''), fr=(proj.kpFixed.rows||[]).find(r=>artKey(r.article||'')===k);
+  // вписанная в КП цена сильнее цены фиксации — правило kpFixUnit компьютера (вписанная → фиксации → каталог); строк артикула несколько — средняя по кол-ву
+  const man=r=>r.priceManual!=null&&r.priceManual!==''&&!isNaN(r.priceManual)&&(+r.priceManual)>0, ra=(proj.kpRows||[]).filter(r=>artKey(r.article||'')===k);
+  if(ra.some(man)){ const alt=(fr&&(+fr.priceUzs||0)>0)?+fr.priceUzs:(+kpUnitPriceUzs(proj,article)||0); let t=0, q=0;
+    ra.forEach(r=>{ const n=r.qty||1; t+=n*(man(r)?Math.round(+r.priceManual):alt); q+=n; }); if(q>0&&t>0) return Math.round(t/q); }
+  if(fr&&(+fr.priceUzs||0)>0) return Math.round(+fr.priceUzs);   // цена заморожена при фиксации (G05): смена цены каталога её не меняет
+  if(!fr){
+    // Нет в зафиксированном КП: цена позиции ДОП (подписанные раньше черновиков), затем последняя цена истории КП
+    const sg=d=>(d.status==='signed'||d.status==='fixed')?0:1;
+    const di=(proj.dops||[]).slice().sort((a,b)=>sg(a)-sg(b)).reduce((o,d)=>o.concat(d.items||[]),[]).find(it=>artKey(it.article||'')===k&&(+it.priceUzs||0)>0);
+    if(di) return Math.round(+di.priceUzs);
+    const hr=(proj.kpHistory||[]).filter(r=>!r.swap&&artKey(r.article||'')===k&&(+r.price||0)>0).pop();
+    if(hr) return Math.round(+hr.price);
+    if(!(proj.kpRows||[]).some(r=>artKey(r.article||'')===k)) return null;
+  }
+  const u=kpUnitPriceUzs(proj,article);   // старая фиксация без замороженной цены / строка КП после фиксации — по текущей
+  return u>0?Math.round(u):null;
+}
+function _wbYmd(iso){ const m=String(iso||'').match(/^(\d{4})-(\d\d)-(\d\d)$/); return m?(m[1].slice(2)+'-'+m[2]+'-'+m[3]):''; }
+// Файл данных → экран: база + непроведённые действия. База не меняется. Отказ действия — st.bad[id] = причина.
+// Копия правила компьютера (_lcRuleMsg, блок ♻ ядра): тексты отказов выдачи/возврата — сверяет tests/mobile_apply.test.js
+function _lcRuleMsg(t,o){
+  if(t==='rek') return o.rk<o.q?'⛔ Рекламационного товара на складе только '+o.rk+' шт':null;
+  if(t==='issue'){
+    if(o.home) return '⛔ Со свободного склада выдавать нельзя — сначала зарезервируйте товар под проект';
+    if(o.res<o.q) return o.res>0?'⛔ Выдать можно не больше резерва: в резерве '+o.res+' шт':'⛔ Сначала зарезервируйте товар под проект: на свободном складе '+(o.free||0)+' шт';
+    return null;
+  }
+  if(!(o.iss<o.q)) return null;
+  return o.proj?'⛔ Столько не выдано — выдано по проекту: '+o.iss+' шт':'⛔ Больше, чем выдано на объект: выдано '+o.iss+' шт';   // proj — без объекта, выдано по всему проекту
+}
+function mobApply(base, ops){
+  const d=(base&&base.data)||{};
+  const cl=x=>JSON.parse(JSON.stringify(Array.isArray(x)?x:[]));
+  const st={projects:cl(d.wk_projects), warehouse:cl(d.wk_warehouse), waybills:cl(d.wk_waybills), bad:{}, applied:[]};
+  mobSetCatalog(base&&base.catalog, base&&base.tnvedDuty, base&&base.defaultKonst);
+  const done=new Set((base&&base.done)||[]);
+  const proj=id=>st.projects.find(p=>p.id===id)||null;
+  const home=()=>_whHomeIn(st.projects)||null;
+  const empty=w=>(w.receivedQty||0)<=0&&(w.stockQty||0)<=0&&(w.deliveredQty||0)<=0&&(w.reclamationQty||0)<=0;
+  const whFind=o=>_phoneWhRow(st.warehouse,o.whId,o.projectId,o.article);
+  let nn=0; const nid=(pre,o)=>pre+o.id+'_'+(++nn);
+  const whRow=(pid,key,createFor,o)=>{   // _kpHistWhRow компьютера
+    let wh=st.warehouse.find(w=>!w.virtual&&!w.rek&&!w.rkg&&!w.cash&&w.projectId===pid&&artKey(w.article)===key);
+    if(!wh&&createFor){ const cat=findItem(key)||{};
+      wh={id:nid('wh',o),article:key,name:cat.name||cat.desc||'',invoiceNumber:'',projectId:pid,projectName:createFor,
+          projectManual:true,receivedQty:0,stockQty:0,deliveredQty:0};
+      st.warehouse.push(wh); }
+    return wh;
+  };
+  const freeIn=(article,q,o)=>{ const h=home(); if(!h||!article) return;   // _kpHistFreeIn: приход в свободный сток
+    const wh=whRow(h.id,artKey(article),h.name||'',o); wh.receivedQty=(wh.receivedQty||0)+q; wh.stockQty=(wh.stockQty||0)+q; };
+  // Накладная дня — правило компьютера (wbFromReserve / wbReturnDoc / wbReclaimDoc): проект + объект «Весь проект» + день + вид;
+  // '' — выдача («Н», статус «Создана»), 'rek' — «Р» (брак забран, не выдача), 'ret' — «В» (возврат в резерв; «Н» не уменьшается)
+  const wbFor=(pid,type,o)=>{
+    let wb=st.waybills.find(w=>(w.projectId||'')===(pid||'')&&(w.objectId||'')===''&&w.date===o.date&&(w.type||'')===type
+      &&(type!==''||(w.status||'created')==='created')&&!(type==='ret'&&w.toFree));
+    if(!wb){ wb={id:nid('wb',o),number:'',date:o.date,projectId:pid||'',objectId:'',type:type,status:type==='ret'?'return':'created',items:[]};
+      wb.number=_wbAutoNum(wb,st.waybills); st.waybills.push(wb); }
+    const pj=proj(pid); if(pj&&pj.noContract){ wb.noContract=true; if(!wb.recipient) wb.recipient=pj.name; }
+    return wb;
+  };
+  const addIssue=(wh,q,type,o,fromRek)=>{   // _wbItemAdd компьютера (без автовыбора допа — это решает компьютер)
+    const wb=wbFor(wh.projectId||'',type,o), cat=findItem(wh.article)||{}, p=proj(wh.projectId);
+    const kpRow=p?(p.kpRows||[]).find(r=>artKey(r.article||'')===artKey(wh.article)):null;
+    const priceUzs=wbKpPrice(wb.noContract?null:p, wh.article);
+    const ex=wb.items.find(x=>artKey(x.article||'')===artKey(wh.article)&&!!x.fromRek===!!fromRek);
+    if(ex) ex.qty=(ex.qty||0)+q;
+    else { const it={article:wh.article,name:wh.name||cat.name||'',desc:cat.desc||(kpRow&&kpRow.desc)||'',qty:q,priceUzs:priceUzs}; if(fromRek) it.fromRek=true; wb.items.push(it); }
+    wb.phone=true; (wb.opIds=wb.opIds||[]).push(o.id);
+  };
+  const Q=o=>Math.floor(+o.qty)||0;
+  const rowsOf=(pid,art,rek)=>st.warehouse.filter(w=>!w.virtual&&!w.rkg&&(w.projectId||'')===(pid||'')&&!!w.rek===!!rek&&artKey(w.article||'')===artKey(art||''));
+  const take=(rows,q,step1,avail)=>{ let left=q; rows.forEach(w=>{ while(left>0&&avail(w)>0){ step1(w); left--; } }); };
+  const step={
+    // Правила ядра компьютера (stkMove): выдача — только из резерва проекта; возврат — в резерв проекта; рекламация — с объекта в «рекламацию»
+    issue(o){ const wh=whFind(o); if(!wh) return 'строки склада больше нет';
+      const q=Q(o); if(q<=0) return 'Введите количество';
+      const h=home(), pid=wh.projectId||'';
+      if(wh.rek){ const rk=rowsOf(pid,wh.article,true).reduce((a,w)=>a+(w.stockQty||0),0);
+        if(rk<q) return _lcRuleMsg('rek',{rk,q});
+        take(rowsOf(pid,wh.article,true),q,w=>{ w.stockQty-=1; w.receivedQty=(w.receivedQty||0)-1; },w=>w.stockQty||0);
+        const pr=whRow(pid,artKey(wh.article),'рекламация',o); pr.receivedQty=(pr.receivedQty||0)+q; pr.deliveredQty=(pr.deliveredQty||0)+q;
+      } else {
+        const rows=rowsOf(pid,wh.article,false), res=rows.reduce((a,w)=>a+(w.stockQty||0),0);
+        const free=h?rowsOf(h.id,wh.article,false).reduce((a,w)=>a+(w.stockQty||0),0):0;
+        const m=_lcRuleMsg('issue',{home:!!(h&&pid===h.id),res,free,q}); if(m) return m;
+        take(rows,q,w=>{ w.stockQty-=1; w.deliveredQty=(w.deliveredQty||0)+1; },w=>w.stockQty||0);
+      }
+      addIssue(wh,q,'',o,!!wh.rek); },   // рекламационный товар заказчику — обычная «Н» (позиция fromRek)
+    reclaim(o){ const wh=whFind(o); if(!wh) return 'строки склада больше нет';
+      const q=Q(o); if(q<=0) return 'Введите количество';
+      const pid=wh.projectId||'', rows=rowsOf(pid,wh.article,false), iss=rows.reduce((a,w)=>a+(w.deliveredQty||0),0);
+      const m=_lcRuleMsg('back',{iss,q,proj:true}); if(m) return m;
+      take(rows,q,w=>{ w.deliveredQty-=1; w.receivedQty=(w.receivedQty||0)-1; },w=>w.deliveredQty||0);
+      let rr=rowsOf(pid,wh.article,true)[0];
+      if(!rr){ rr={id:nid('wh',o),article:wh.article,name:wh.name||'',invoiceNumber:'',projectId:pid,projectName:(proj(pid)||{}).name||'',
+        rek:true,receivedQty:0,stockQty:0,deliveredQty:0}; st.warehouse.push(rr); }
+      rr.receivedQty=(rr.receivedQty||0)+q; rr.stockQty=(rr.stockQty||0)+q;
+      addIssue(wh,q,'rek',o); },
+    return(o){ const wh=whFind(o); if(!wh) return 'строки склада больше нет';
+      const q=Q(o); if(q<=0) return 'Введите количество';
+      const pid=wh.projectId||'', rows=rowsOf(pid,wh.article,false), iss=rows.reduce((a,w)=>a+(w.deliveredQty||0),0);
+      const m=_lcRuleMsg('back',{iss,q,proj:true}); if(m) return m;
+      take(rows,q,w=>{ w.deliveredQty-=1; w.stockQty=(w.stockQty||0)+1; },w=>w.deliveredQty||0);   // → резерв этого проекта
+      addIssue(wh,q,'ret',o); },   // документ «Возврат» дня
+    swap(o){ const c=_swapCheckIn(o,st.projects,st.warehouse); if(!c.ok) return c.msg;   // whSwap компьютера
+      const {p,out,inn,oq,iq,home:h}=c;
+      if(out.projectId===h.id){
+        out.receivedQty=Math.max(0,(out.receivedQty||0)-oq); out.stockQty=Math.max(0,(out.stockQty||0)-oq); out.projectManual=true;
+        const pr=whRow(p.id,artKey(out.article),p.name||'',o);
+        pr.receivedQty=(pr.receivedQty||0)+oq; pr.deliveredQty=(pr.deliveredQty||0)+oq; pr.projectManual=true;
+      } else { out.stockQty=(out.stockQty||0)-oq; out.deliveredQty=(out.deliveredQty||0)+oq; out.projectManual=true; }
+      inn.deliveredQty=Math.max(0,(inn.deliveredQty||0)-iq); inn.receivedQty=Math.max(0,(inn.receivedQty||0)-iq); inn.projectManual=true;
+      freeIn(inn.article,iq,o);
+      st.warehouse=st.warehouse.filter(w=>!((w.id===out.id||w.id===inn.id)&&empty(w))); },
+    kp(o){ let p=proj(o.projectId);
+      if(!p){ if(!o.isNew) return 'проекта больше нет';
+        p={id:o.projectId,name:o.name||'Новый проект',contractor:o.contractor||'',kpNumber:'КП-'+String(st.projects.length+1).padStart(3,'0'),
+          created:o.date,edited:o.date,kpRows:[],status:{},konst:{...(base.defaultKonst||{})},konstOverride:{},contracts:[],projType:'customer',phoneNew:true};
+        st.projects.push(p);
+      } else if(p.closed) return 'проект закрыт';
+      else if(p.kpFixed&&p.kpFixed.fixed) return 'КП зафиксировано на компьютере';
+      p.kpRows=cl(o.rows); p.edited=o.date; }
+  };
+  (ops||[]).forEach(o=>{ if(!o||done.has(o.id)) return;
+    const f=step[o.type]; const r=f?f(o):'неизвестное действие';
+    if(r) st.bad[o.id]=r; else st.applied.push(o.id); });
+  return st;
+}
+// _swapCheckIn компьютера: {ok:true,p,out,inn,oq,iq,home} либо {ok:false,msg}
+function _swapCheckIn(o,projs,whs){
+  const home=_whHomeIn(projs); if(!home) return {ok:false,msg:'Нет проекта Weltklasse_WH — забранное некуда положить'};
+  const p=projs.find(x=>x.id===o.projectId); if(!p) return {ok:false,msg:'Выбери проект'};
+  const out=whs.find(w=>!w.virtual&&w.id===o.outId), inn=whs.find(w=>!w.virtual&&w.id===o.inId);
+  if(!out||!inn) return {ok:false,msg:'Выбери, что отдал и что забрал'};
+  if(out.id===inn.id) return {ok:false,msg:'Отдал и забрал — одна и та же строка склада'};
+  const oq=Math.floor(+o.outQty)||0, iq=Math.floor(+o.inQty)||0;
+  if(!(oq>0)||!(iq>0)) return {ok:false,msg:'Укажи количество — отдал и забрал'};
+  if(out.projectId!==p.id&&out.projectId!==home.id) return {ok:false,msg:'Отдать можно только из свободного стока или резерва этого проекта'};
+  if(inn.projectId!==p.id) return {ok:false,msg:'Забрать можно только выданное на этот проект'};
+  if(oq>(out.stockQty||0)) return {ok:false,msg:'⛔ На складе '+(out.stockQty||0)+' шт '+out.article+' — отдать '+oq+' нельзя'};
+  if(iq>(inn.deliveredQty||0)) return {ok:false,msg:'⛔ На проект выдано '+(inn.deliveredQty||0)+' шт '+inn.article+' — забрать '+iq+' нельзя'};
+  return {ok:true,p,out,inn,oq,iq,home};
+}
+</script>
+
+<script id="web-crypt">
+// ===== 🔐 WEB-CRYPT — шифрование выкладки в интернет (эталон; копии в weltklasse_kp.html и weltklasse_mobile.html сверяет tests/web_crypt.test.js) =====
+// Конверт: {app:'weltklasse-web', v:1, kind:'staff'|'phone'|'off', savedAt, salt:b64(16), iv:b64(12), iter, data:b64(AES-GCM(gzip(JSON)))}; у 'off' — без salt/iv/data.
+// Ключ — PBKDF2-SHA-256 из пароля, WEB_ITER повторов. Ошибки — Error с code: BAD_PASSWORD · BAD_FORMAT · OFF.
+const WEB_ITER=250000;
+function webCryptOk(){ try{ return !!(globalThis.crypto&&crypto.subtle&&crypto.getRandomValues&&typeof CompressionStream==='function'&&typeof DecompressionStream==='function'&&typeof TextEncoder==='function'); }catch(e){ return false; } }
+function _webErr(code){ const e=new Error(code); e.code=code; return e; }
+function _webB64(u8){ let s=''; for(let i=0;i<u8.length;i+=0x8000) s+=String.fromCharCode.apply(null,u8.subarray(i,i+0x8000)); return btoa(s); }
+function _webUnB64(s){ if(typeof s!=='string'||!/^[A-Za-z0-9+/]*={0,2}$/.test(s)) throw _webErr('BAD_FORMAT');
+  let b; try{ b=atob(s); }catch(e){ throw _webErr('BAD_FORMAT'); } const u=new Uint8Array(b.length); for(let i=0;i<b.length;i++) u[i]=b.charCodeAt(i); return u; }
+async function _webPipe(u8,stream){ return new Uint8Array(await new Response(new Blob([u8]).stream().pipeThrough(stream)).arrayBuffer()); }
+async function _webKey(password,salt,iter){
+  const base=await crypto.subtle.importKey('raw',new TextEncoder().encode(String(password||'')),'PBKDF2',false,['deriveKey']);
+  return crypto.subtle.deriveKey({name:'PBKDF2',hash:'SHA-256',salt,iterations:iter},base,{name:'AES-GCM',length:256},false,['encrypt','decrypt']);
+}
+async function webSeal(obj,password,kind){
+  if(!['staff','phone','off'].includes(kind)) throw _webErr('BAD_FORMAT');
+  const env={app:'weltklasse-web',v:1,kind,savedAt:new Date().toISOString()};
+  if(kind==='off') return env;
+  const salt=crypto.getRandomValues(new Uint8Array(16)), iv=crypto.getRandomValues(new Uint8Array(12));
+  const gz=await _webPipe(new TextEncoder().encode(JSON.stringify(obj)),new CompressionStream('gzip'));
+  const ct=new Uint8Array(await crypto.subtle.encrypt({name:'AES-GCM',iv},await _webKey(password,salt,WEB_ITER),gz));
+  return Object.assign(env,{salt:_webB64(salt),iv:_webB64(iv),iter:WEB_ITER,data:_webB64(ct)});
+}
+async function webOpen(env,password){
+  if(!env||typeof env!=='object'||env.app!=='weltklasse-web'||env.v!==1) throw _webErr('BAD_FORMAT');
+  if(env.kind==='off') throw _webErr('OFF');
+  if(!['staff','phone'].includes(env.kind)||!Number.isInteger(env.iter)||env.iter<1||typeof env.data!=='string') throw _webErr('BAD_FORMAT');
+  const salt=_webUnB64(env.salt), iv=_webUnB64(env.iv), ct=_webUnB64(env.data);
+  if(salt.length!==16||iv.length!==12||ct.length<17) throw _webErr('BAD_FORMAT');
+  let gz; try{ gz=new Uint8Array(await crypto.subtle.decrypt({name:'AES-GCM',iv},await _webKey(password,salt,env.iter),ct)); }catch(e){ throw _webErr('BAD_PASSWORD'); }
+  try{ return JSON.parse(new TextDecoder().decode(await _webPipe(gz,new DecompressionStream('gzip')))); }catch(e){ throw _webErr('BAD_FORMAT'); }
+}
+// ===== /WEB-CRYPT =====
+</script>
+
+<script id="mob-base">
+// ===== База с компьютера: общий путь файла и интернета (tests/mobile_web.test.js) =====
+// applyBase(j, opt?) -> {ok, err?, done}: err ∈ FORMAT (не файл данных) · FIRM (другая фирма при непустом журнале; спросить и
+// повторить с {force:true}). Применение: база = j, из журнала снимаются проведённые на компьютере (j.done), done — их число.
+function applyBase(j,opt){
+  opt=opt||{};
+  const d=j&&j.data;
+  if(!j||j.app!=='weltklasse-phone-data'||j.v!==1||!d||!Array.isArray(d.wk_projects)||!Array.isArray(d.wk_warehouse)) return {ok:false,err:'FORMAT',done:0};
+  if(!opt.force&&BASE&&OPS.length&&(BASE.firm||'')!==(j.firm||'')) return {ok:false,err:'FIRM',firm:j.firm||'',done:0};
+  const done=new Set(j.done||[]), before=OPS.length;
+  if(!j.views&&BASE&&BASE.views) j.views=BASE.views;   // файл папки «Телефон» без сводок — прежние сводки остаются (экраны пишут «сводки от …»)
+  BASE=j; OPS=OPS.filter(o=>!done.has(o.id)); EXPORTED=new Set([...EXPORTED].filter(id=>!done.has(id))); KPD=null;
+  persist(); recalc(); render();
+  return {ok:true,done:before-OPS.length};
+}
+// Вопрос про чужую фирму — один текст для файла и интернета
+function baseFirmAsk(j){ return confirm('Данные другой фирмы («'+(j.firm||'—')+'»), а в журнале есть действия по «'+((BASE&&BASE.firm)||'—')+'». Загрузить?'); }
+// Тексты ошибок загрузки
+const WEB_ERR={BAD_PASSWORD:'Пароль не подошёл',NO_DATA:'Данных ещё нет',OFF:'Владелец выключил доступ',NET:'Нет связи — показана прежняя база',
+  BAD_FORMAT:'Данные в интернете повреждены',FORMAT:'Это не данные телефона',FIRM:'Данные другой фирмы — не загружено'};
+// Интернет, шаг 1: ../data/phone.json → webOpen, база не трогается. Неверный пароль стирает запомненный, только если это он.
+async function webFetch(pw){
+  let env;
+  try{ const r=await fetch('../data/phone.json?t='+Date.now(),{cache:'no-store'}); if(!r.ok) return {ok:false,err:'NO_DATA'};
+    try{ env=await r.json(); }catch(e){ return {ok:false,err:'NO_DATA'}; } }
+  catch(e){ return {ok:false,err:'NET'}; }
+  try{ return {ok:true,j:await webOpen(env,pw)}; }
+  catch(e){ const c=(e&&e.code)||'BAD_FORMAT';
+    if(c==='BAD_PASSWORD'){ try{ if(localStorage.getItem('wkm_web_pw')===pw) localStorage.removeItem('wkm_web_pw'); }catch(x){} }
+    return {ok:false,err:c}; }
+}
+// Интернет целиком: webFetch → applyBase (чужая фирма — тот же вопрос, что для файла). opt.remember — запомнить пароль (wkm_web_pw).
+async function webLoad(pw,opt){
+  opt=opt||{};
+  const f=await webFetch(pw); if(!f.ok) return {ok:false,err:f.err,done:0};
+  let r=applyBase(f.j);
+  if(!r.ok&&r.err==='FIRM'&&baseFirmAsk(f.j)) r=applyBase(f.j,{force:true});
+  if(r.ok&&opt.remember){ try{ localStorage.setItem('wkm_web_pw',pw); }catch(x){} }
+  return r;
+}
+// Кнопка «↻ Обновить» и тихая загрузка при открытии (silent — не человек). Тихая: ничего не спрашивает, лист не перерисовывает;
+// незаконченная работа (черновик КП с правками, введённое в поля листа — mobUnfinished()) или чужая фирма — данные не применяются,
+// метка в шапке (WEB_LAST.err = 'PENDING' | 'FIRM' | код ошибки). Вписанный пароль сильнее запомненного.
+let WEB_PW='', WEB_REM=true, WEB_BUSY=false, WEB_LAST=null;
+function webLabel(){ if(!WEB_LAST||!WEB_LAST.err) return '';
+  return WEB_LAST.err==='PENDING'?'новые данные — нажмите ↻ Обновить':'не обновлено: '+(WEB_LAST.err==='FIRM'?'данные другой фирмы':(WEB_ERR[WEB_LAST.err]||WEB_LAST.err)); }
+async function webRefresh(silent){
+  if(WEB_BUSY) return;
+  const saved=lsGet('wkm_web_pw'), typed=WEB_PW, pw=typed||saved;
+  if(!pw){ if(!silent) toast('Впишите пароль телефона'); return; }
+  if(!silent&&KPD&&KPD.dirty&&!confirm('КП не сохранено — загрузить данные и выйти без сохранения?')) return;
+  WEB_BUSY=true; if(!silent&&CUR==='sync') render();
+  let r;
+  try{
+    if(silent){
+      const f=await webFetch(pw);
+      if(!f.ok) r={ok:false,err:f.err};
+      else if(BASE&&OPS.length&&(BASE.firm||'')!==(f.j.firm||'')) r={ok:false,err:'FIRM'};
+      else if((KPD&&KPD.dirty)||mobUnfinished()) r={ok:false,err:'PENDING'};
+      else r=applyBase(f.j);
+    } else r=await webLoad(pw,{remember:!!typed&&WEB_REM});
+  }catch(e){ r={ok:false,err:'NET'}; }
+  WEB_BUSY=false;
+  if(r.ok){ WEB_LAST=null; if(typed&&WEB_REM) WEB_PW='';
+    if(!silent||r.done) toast('🌐 Данные загружены'+(r.done?' · проведено на компьютере: '+r.done:'')); }
+  else { WEB_LAST={err:r.err};
+    if(r.err==='BAD_PASSWORD') WEB_PW='';
+    if(!silent) toast('⛔ '+(WEB_ERR[r.err]||r.err),3500); }
+  renderHeader(); if(!silent) render();
+}
+</script>
+
+<script id="mob-views">
+// ===== Экраны просмотра (Проекты/Хаб, Финансы, Инвойсы и поставки, Отчёты): ЧИСТЫЕ поиск и формат (tests/mobile_views.test.js) =====
+// Данные — base.views, посчитанные на компьютере (webPhoneViews, кладётся только в выкладку phone.json); своих формул здесь нет.
+function mvViews(base){ const v=base&&base.views; return (v&&v.v===1&&Array.isArray(v.projects))?v:null; }
+function _mvWords(q){ return String(q||'').toLowerCase().split(/\s+/).filter(Boolean); }
+function _mvHit(words,parts){ if(!words.length) return true; const h=parts.map(x=>x==null?'':String(x)).join(' ').toLowerCase(); return words.every(w=>h.includes(w)); }
+// Проекты: название, контрагент, номера договоров; все слова; закрытые — только с opt.closed, последними
+function mvProjFilter(list,q,opt){ const w=_mvWords(q), on=!!(opt&&opt.closed);
+  const hit=(list||[]).filter(p=>(on||!p.closed)&&_mvHit(w,[p.name,p.contractor].concat((p.contracts||[]).map(c=>c.number))));
+  return hit.filter(p=>!p.closed).concat(hit.filter(p=>p.closed)); }
+// Позиции Хаба: артикул/наименование; mode '' · 'problem' (проблема, недопоставка, сверх) · 'rest' (осталось выдать)
+function mvRowsFilter(rows,q,mode){ const w=_mvWords(q);
+  return (rows||[]).filter(r=>_mvHit(w,[r.article,r.name])&&(mode!=='problem'||r.problem||(+r.lack||0)>0||r.over)&&(mode!=='rest'||(+r.rest||0)>0)); }
+// Инвойсы: статус ''|'transit'|'cleared'; поиск — номер, поставщик, № машины, проекты, артикулы позиций
+function mvInvFilter(list,q,status){ const w=_mvWords(q);
+  return (list||[]).filter(v=>(!status||v.status===status)&&_mvHit(w,[v.number,v.supplier,v.truck].concat(v.projects||[],(v.items||[]).map(i=>i.article)))); }
+// Растаможка по машинам: 'way' — не растаможены (и частично), 'done' — растаможены
+function mvShipTab(list,tab,q){ const w=_mvWords(q);
+  return (list||[]).filter(s=>(tab==='done'?!!s.cleared:!s.cleared)&&_mvHit(w,[s.seq].concat(s.refs||[],s.projects||[]))); }
+// Отчёты: строки листа, где все слова есть в ячейках строки
+function mvRepRows(sheet,q){ const w=_mvWords(q); return ((sheet&&sheet.rows)||[]).filter(r=>_mvHit(w,r||[])); }
+// Ячейка: num/money — целое с пробелами тысяч (как fmtUZS программы), date ISO → дд.мм.гг, остальное как есть
+function mvCell(v,k){
+  if(v==null||v==='') return '';
+  if((k==='num'||k==='money')&&(typeof v==='number'||/^-?\d+(\.\d+)?$/.test(String(v).trim()))) return Math.round(+v).toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ');
+  if(k==='date'){ const m=String(v).match(/^(\d{4})-(\d\d)-(\d\d)/); if(m) return m[3]+'.'+m[2]+'.'+m[1].slice(2); }
+  return String(v);
+}
+// «🖥 Полная версия» — программа целиком на сайте (/app/), на том же листе
+function mvFull(page){ return '../app/'+(page?'#'+page:''); }
+</script>
+
+<script id="mob-views-ui">
+// ===== 👁 Просмотр: Проекты/Хаб, Финансы, Инвойсы и поставки, Отчёты — только рисуют base.views (поиск/формат — блок mob-views) =====
+let MV={pq:'',closed:false,fclosed:false,pid:'',rq:'',rmode:'',fin:'proj',fq:'',cust:'way',sq:'',inv:'inv',ist:'',iq:'',rtab:'',rsh:0,repq:'',open:{}};
+const MV_LIM=60;
+// Дата сводок: views бывают старше базы (база загружена файлом без views — прежние сводки оставлены)
+function mvWhen(iso){ const d=new Date(iso); if(isNaN(d)) return '?'; const z=x=>String(x).padStart(2,'0'); return z(d.getDate())+'.'+z(d.getMonth()+1)+'.'+String(d.getFullYear()).slice(2)+' '+z(d.getHours())+':'+z(d.getMinutes()); }
+function mvTop(page){ const V=mvViews(BASE), old=V&&BASE.savedAt&&new Date(BASE.savedAt)-new Date(V.savedAt)>60000;
+  return `<div class="mv-top" style="justify-content:space-between;align-items:center;gap:8px">${V?`<span class="${old?'tag soft':'help'}" title="${old?'Сводки старше данных склада — выложите с компьютера и ↻ Обновить':'Когда компьютер посчитал эти сводки'}">сводки от ${esc(mvWhen(V.savedAt))}</span>`:'<span></span>'}<a class="btn" href="${esc(mvFull(page))}" title="Открыть программу целиком на сайте — этот же лист">🖥 Полная версия</a></div>`; }
+function mvNoViews(box,page){ box.innerHTML=mvTop(page)+`<div class="card empty"><p>Этих данных в базе телефона нет.<br>Обновите программу на компьютере и выложите (🌐 В интернете → Выложить сейчас), затем ↻ Обновить на листе 🔄 Обмен.</p>
+  <button class="btn main" onclick="go('sync')" title="Перейти на лист Обмен">🔄 К обмену</button></div>`; }
+function mvInput(f,el){ MV[f]=el.value; const id=el.id; render(); const e=$(id); if(e){ e.focus(); e.setSelectionRange(e.value.length,e.value.length); } }
+function mvSet(f,v){ MV[f]=v; render(); }
+function mvToggle(k){ MV.open[k]=!MV.open[k]; render(); }
+function mvTabs(f,items){ return `<div class="tabs">${items.map(([v,l,t])=>`<button class="${MV[f]===v?'on':''}" onclick="mvSet('${f}','${esc(jsq(v))}')" title="${esc(t||l)}">${esc(l)}</button>`).join('')}</div>`; }
+function mvSearch(f,ph){ return `<input class="full" id="mv-${f}" placeholder="🔍 ${esc(ph)}" value="${esc(MV[f])}" oninput="mvInput('${f}',this)">`; }
+function mvMore(n){ return n>MV_LIM?`<div class="help">Показано ${MV_LIM} из ${n} — уточните поиск</div>`:''; }
+// «осталось» — по числу left с компьютера: ≈0 — оплачено, минус — переплата (как лист Проекты)
+function mvLeft(sum,left){ if(!(+sum>0)) return ''; const z=+left||0;
+  return Math.abs(z)<=0.5?'<span class="tag ok">оплачено ✓</span>':z<0?'переплата <b>'+fmt(-z)+'</b>':'осталось <b>'+fmt(z)+'</b>'; }
+const mvD=s=>esc(mvCell(s,'date'));
+
+// ----- 📁 Проекты / Хаб -----
+function mvPj(id){ MV.pid=id; MV.rq=''; MV.rmode=''; render(); window.scrollTo(0,0); }
+function renderPj(box){
+  const V=mvViews(BASE); if(!V) return mvNoViews(box,'projects');
+  if(MV.pid){ const p=V.projects.find(x=>x.id===MV.pid); if(p) return renderPjCard(box,p); MV.pid=''; }
+  const list=mvProjFilter(V.projects,MV.pq,{closed:MV.closed});
+  const cards=list.slice(0,MV_LIM).map(p=>`<div class="card tap" onclick="mvPj('${esc(jsq(p.id))}')" title="Открыть карточку проекта">
+    <div class="it-h"><span>${esc(p.contractor||'')}</span>${p.closed?'<span class="tag">закрыт</span>':(p.statusLabel?`<span class="tag">${esc(p.statusLabel)}</span>`:'')}</div>
+    <div class="it-a">${esc(p.name)}</div>
+    <div class="qtys">${p.warehouse?'<span class="muted">склад</span>':p.contracts.length?`договор <b>${fmt(p.sum)}</b> · получено <b>${fmt(p.paid)}</b> · ${mvLeft(p.sum,p.left)}`:'<span class="muted">договора нет</span>'}</div></div>`).join('');
+  box.innerHTML=mvTop('projects')+`<div class="card">${mvSearch('pq','проект, контрагент, № договора')}
+    <div class="row"><label class="muted"><input type="checkbox" ${MV.closed?'checked':''} onchange="MV.closed=this.checked;render()" title="Показать и закрытые проекты"> закрытые</label></div></div>`
+    +(cards||'<div class="card muted">Ничего не найдено</div>')+mvMore(list.length);
+}
+function mvCtrHtml(c){
+  const t=c.kind==='dop'?'ДОП №'+esc(c.dopN==null?'':c.dopN)+(c.number?' · №'+esc(c.number):''):'Договор №'+esc(c.number||'—');
+  return `<div class="wl"><span class="l"><b>${t}</b>${c.date?' · '+mvD(c.date):''} ${c.signed?'<span class="tag ok">подписан</span>':'<span class="tag soft">не подписан</span>'}${c.note?'<br><span class="muted">'+esc(c.note)+'</span>':''}</span>
+    <span class="r"><b>${fmt(c.sum)}</b><br><span class="muted">получено ${fmt(c.paid)}</span><br>${mvLeft(c.sum,c.left)}</span></div>`;
+}
+function renderPjCard(box,p){
+  const cs=p.contracts||[], ds=p.dops||[], T=p.tiles;
+  const tile=(l,v)=>`<div class="tile"><div class="n">${fmt(v)}</div><div class="l">${l}</div></div>`;
+  const rows=mvRowsFilter(p.rows,MV.rq,MV.rmode);
+  const n=(l,v)=>(+v||0)?` · ${l} <b>${fmt(v)}</b>`:'';
+  const rowsHtml=rows.slice(0,MV_LIM).map(r=>`<div class="kp-r"><div class="it-h"><span class="it-a">${esc(r.article)}</span><span>${r.supplyLabel?`<span class="tag">${esc(r.supplyLabel)}</span>`:''}</span></div>
+    <div class="it-n">${esc(r.name||'')}</div>
+    <div class="qtys">по договору <b>${fmt(r.total)}</b>${n('заказано',r.inv)}${n('в пути',r.transit)} · получено <b>${fmt(r.recv)}</b> · резерв <b>${fmt(r.res)}</b> · выдано <b>${fmt(r.iss)}</b> · остаток <b>${fmt(r.rest)}</b>${n('свободно на складе',r.free)}${n('рекламация',r.rek)}</div>
+    <div class="row">${(+r.lack||0)>0?`<span class="tag alert">недопоставлено ${fmt(r.lack)}</span>`:''}${(+r.toOrder||0)>0?`<span class="tag alert">поставить ещё ${fmt(r.toOrder)}</span>`:''}${r.over?'<span class="tag alert">сверх договора</span>':''}${(+r.draft||0)?`<span class="tag soft">черновик ДОП ${fmt(r.draft)}</span>`:''}${(+r.returned||0)?`<span class="tag">возвращено ${fmt(r.returned)}</span>`:''}</div></div>`).join('');
+  box.innerHTML=mvTop('warehouse')+`<div class="card"><div class="row" style="justify-content:space-between;flex-wrap:nowrap"><h3 style="margin:0;min-width:0;overflow-wrap:anywhere">${esc(p.name)}</h3>
+      <button class="btn" onclick="mvPj('')" title="К списку проектов">← Проекты</button></div>
+    <div class="muted">${esc(p.contractor||'')}${p.statusLabel?' · '+esc(p.statusLabel):''}${p.closed?' · закрыт':''}</div></div>
+    <div class="card"><h3>Договоры и оплаты</h3>${cs.map(mvCtrHtml).join('')||'<div class="muted">Договора нет</div>'}
+      ${cs.length?`<div class="tot"><span>Итого: получено ${fmt(p.paid)}</span><span>${fmt(p.sum)}</span></div><div style="text-align:right;margin-top:2px">${mvLeft(p.sum,p.left)}</div>`:''}</div>
+    ${ds.length?`<div class="card"><h3>ДОП</h3>${ds.map(d=>`<div class="wl"><span class="l"><b>ДОП №${esc(d.n)}</b>${d.date?' · '+mvD(d.date):''} <span class="tag ${d.status==='signed'?'ok':'soft'}">${esc(d.statusLabel||d.status)}</span>${d.note?'<br><span class="muted">'+esc(d.note)+'</span>':''}</span><span class="r">${fmt(d.sum)}</span></div>`).join('')}</div>`:''}
+    ${T?`<div class="card"><h3>Хаб</h3><div class="tiles">${[tile('позиций по договору',T.positions),tile('всего шт',T.pcs),tile('сумма договора, сум',T.sum),tile('получено',T.recv),tile('в пути',T.transit),
+      tile('зарезервировано',T.res),tile('выдано',T.iss),tile('осталось выдать',T.rest),tile('недопоставлено',T.lack)].join('')}</div>
+      <div class="muted">заказано <b>${fmt(T.inv)}</b> · поставить ещё <b>${fmt(T.toOrder)}</b>${(+T.returned||0)?' · возвращено <b>'+fmt(T.returned)+'</b>':''}</div></div>
+    <div class="card"><h3>Позиции (${(p.rows||[]).length})</h3>${mvSearch('rq','артикул или название')}
+      <div class="tabs" style="margin-top:8px">${[['','Все'],['problem','Проблемы'],['rest','Осталось выдать']].map(([v,l])=>`<button class="${MV.rmode===v?'on':''}" onclick="mvSet('rmode','${v}')" title="Показать: ${l.toLowerCase()}">${l}</button>`).join('')}</div>
+      ${rowsHtml||'<div class="muted">Ничего не найдено</div>'}${mvMore(rows.length)}</div>`:`<div class="card muted">${p.warehouse?'Склад — сводки Хаба нет':'Сводки Хаба нет'}</div>`}`;
+}
+
+// ----- 💰 Финансы и оплаты -----
+function mvShipHtml(list){
+  const sum=list.reduce((t,s)=>t+(+s.sum||0),0);
+  return list.slice(0,MV_LIM).map(s=>`<div class="card"><div class="it-h"><span>${(s.refs||[]).map(esc).join(', ')}</span>${s.cleared?'<span class="tag ok">растаможена</span>':s.part?'<span class="tag soft">частично</span>':'<span class="tag">в пути</span>'}</div>
+    <div class="it-a">🚛 ${esc(s.seq||'без № машины')}</div><div class="it-n">${(s.projects||[]).map(esc).join(', ')}</div>
+    <div class="qtys">${s.date?'отправка '+mvD(s.date)+' · ':''}${s.cust?'растаможка '+mvD(s.cust)+' · ':''}${(+s.sum||0)?'<b>'+fmt(s.sum)+'</b> сум':'<span class="tag soft">без суммы</span>'}</div></div>`).join('')
+    +(list.length?`<div class="card"><div class="tot" style="border:0;margin:0;padding:0"><span>Итого (${list.length})</span><span>${fmt(sum)} сум</span></div></div>`:'<div class="card muted">Ничего не найдено</div>')+mvMore(list.length);
+}
+function mvCustTabs(V){ const all=V.shipments||[];
+  return mvTabs('cust',[['way','🚛 В пути ('+mvShipTab(all,'way').length+')','Не растаможенные машины'],['done','✅ Растаможены ('+mvShipTab(all,'done').length+')','Растаможенные машины']]); }
+function renderFin(box){
+  const V=mvViews(BASE); if(!V) return mvNoViews(box,'finance');
+  const F=V.finance||{mfr:[],projects:[]};
+  let h=mvTabs('fin',[['proj','По проектам','Договоры, получено, осталось'],['mfr','Производителю','Инвойсы производителя и оплаты'],['cust','Растаможка','Растаможка по машинам']]);
+  if(MV.fin==='mfr'){
+    h+=(F.rate?`<div class="muted" style="margin:0 2px 8px">курс: ${fmt(F.rate)} сум/€</div>`:'')+((F.mfr||[]).map(g=>`<div class="card"><h3>${esc(g.label)}</h3>
+      <div class="qtys">инвойсы <b>${fmt(g.eur)} €</b> · оплачено <b>${fmt(g.paid)} €</b> · ${(+g.rest||0)>0.5?'осталось <b>'+fmt(g.rest)+' €</b>':'<span class="tag ok">оплачено ✓</span>'}</div>
+      ${(+g.free||0)?`<div class="help">оплачено сверх инвойсов: ${fmt(g.free)} €</div>`:''}
+      <div style="margin-top:6px">${(g.invs||[]).map(v=>`<div class="wl"><span class="l"><b>${esc(v.number||'—')}</b>${v.date?' · '+mvD(v.date):''}${v.note?'<br><span class="muted">'+esc(v.note)+'</span>':''}</span>
+        <span class="r">${fmt(v.eur)} €<br><span class="muted">оплачено ${fmt(v.paid)}</span><br>${(+v.rest||0)>0.5?'осталось <b>'+fmt(v.rest)+'</b>':'<span class="tag ok">✓</span>'}</span></div>`).join('')}</div></div>`).join('')||'<div class="card muted">Инвойсов производителя нет</div>');
+  } else if(MV.fin==='cust'){
+    h+=mvCustTabs(V)+`<div class="card">${mvSearch('sq','№ машины, поставки, проект')}</div>`+mvShipHtml(mvShipTab(V.shipments,MV.cust,MV.sq));
+  } else {
+    const list=mvProjFilter(F.projects,MV.fq,{closed:MV.fclosed}).filter(p=>(p.contracts||[]).length);
+    const S=f=>list.reduce((t,p)=>t+(+p[f]||0),0);
+    h+=`<div class="card">${mvSearch('fq','проект, № договора')}
+        <div class="row"><label class="muted"><input type="checkbox" ${MV.fclosed?'checked':''} onchange="MV.fclosed=this.checked;render()" title="Показать и закрытые проекты"> закрытые</label></div></div>
+      <div class="card"><div class="qtys">договоры <b>${fmt(S('sum'))}</b> · получено <b>${fmt(S('paid'))}</b> · осталось <b>${fmt(S('left'))}</b></div><div class="help">${MV.fclosed?'проекты':'открытые проекты'} с договором: ${list.length}</div></div>`
+      +list.slice(0,MV_LIM).map(p=>{ const k='fin:'+p.id;
+        return `<div class="card tap" onclick="mvToggle('${esc(jsq(k))}')" title="Показать договоры проекта"><div class="it-h"><span>${MV.open[k]?'▼':'▶'} договоров: ${(p.contracts||[]).length}</span><span>${mvLeft(p.sum,p.left)}</span></div>
+        <div class="it-a">${esc(p.name)}</div><div class="qtys">договор <b>${fmt(p.sum)}</b> · получено <b>${fmt(p.paid)}</b></div>
+        ${MV.open[k]?'<div style="margin-top:6px">'+(p.contracts||[]).map(mvCtrHtml).join('')+'</div>':''}</div>`; }).join('')
+      +(list.length?'':'<div class="card muted">Ничего не найдено</div>')+mvMore(list.length);
+  }
+  box.innerHTML=mvTop('finance')+h;
+}
+
+// ----- 📦 Инвойсы и поставки -----
+function renderInv(box){
+  const V=mvViews(BASE); if(!V) return mvNoViews(box,'invoices');
+  const all=V.invoices||[];
+  let h=mvTabs('inv',[['inv','Инвойсы ('+all.length+')','Инвойсы производителя'],['ship','Поставки ('+(V.shipments||[]).length+')','Машины: что внутри, растаможено ли']]);
+  if(MV.inv==='ship') h+=mvCustTabs(V)+`<div class="card">${mvSearch('sq','№ машины, поставки, проект')}</div>`+mvShipHtml(mvShipTab(V.shipments,MV.cust,MV.sq));
+  else {
+    const list=mvInvFilter(all,MV.iq,MV.ist);
+    h+=`<div class="card">${mvSearch('iq','№, поставщик, машина, проект, артикул')}</div>`
+      +mvTabs('ist',[['','Все'],['transit','В пути ('+mvInvFilter(all,'','transit').length+')'],['cleared','Растаможены ('+mvInvFilter(all,'','cleared').length+')']])
+      +list.slice(0,MV_LIM).map(v=>{ const k='inv:'+v.id;
+        return `<div class="card tap" onclick="mvToggle('${esc(jsq(k))}')" title="Показать позиции инвойса"><div class="it-h"><span>${mvD(v.date)} · ${esc(v.supplier||'')}</span><span class="tag ${v.status==='cleared'?'ok':''}">${esc(v.statusLabel||'')}</span></div>
+        <div class="it-a">${MV.open[k]?'▼':'▶'} ${esc(v.number||'без номера')}</div>
+        <div class="qtys"><b>${fmt(v.sum)} €</b>${v.truck?' · 🚛 '+esc(v.truck):''}${v.rek?' · <span class="tag soft">рекламация</span>':''}</div>
+        ${(v.projects||[]).length?`<div class="muted">${v.projects.map(esc).join(', ')}</div>`:''}
+        ${MV.open[k]?'<div style="margin-top:6px">'+(v.items||[]).map(i=>`<div class="wl"><span class="l"><b>${esc(i.article)}</b> ${esc(i.name||'')}${i.project?'<br><span class="muted">'+esc(i.project)+'</span>':''}</span><span class="r">${fmt(i.qty)} × ${esc(String(i.priceEur))} €</span></div>`).join('')+'</div>':''}</div>`; }).join('')
+      +(list.length?'':'<div class="card muted">Ничего не найдено</div>')+mvMore(list.length);
+  }
+  box.innerHTML=mvTop('invoices')+h;
+}
+
+// ----- 📈 Отчёты -----
+function renderRep(box){
+  const V=mvViews(BASE); if(!V) return mvNoViews(box,'reports');
+  const R=V.reports||{}, tabs=Object.keys(R);
+  if(!tabs.length){ box.innerHTML=mvTop('reports')+'<div class="card muted">Отчётов нет</div>'; return; }
+  if(!R[MV.rtab]){ MV.rtab=tabs[0]; MV.rsh=0; }
+  const T=R[MV.rtab], shs=T.sheets||[]; if(!shs[MV.rsh]) MV.rsh=0;
+  const sh=shs[MV.rsh];
+  let h=`<div class="tabs">${tabs.map(t=>`<button class="${MV.rtab===t?'on':''}" onclick="MV.rtab='${esc(jsq(t))}';MV.rsh=0;render()" title="${esc(R[t].label||t)}">${esc(R[t].label||t)}</button>`).join('')}</div>`
+    +(T.note?`<div class="help" style="margin:0 2px 8px">${esc(T.note)}</div>`:'')
+    +(T.error?`<div class="card"><span class="tag alert">отчёт не собрался на компьютере: ${esc(T.error)}</span></div>`:'');
+  if(shs.length>1) h+=`<div class="tabs">${shs.map((s,i)=>`<button class="${MV.rsh===i?'on':''}" onclick="MV.rsh=${i};render()" title="Лист отчёта">${esc(s.name)}</button>`).join('')}</div>`;
+  if(sh){
+    const rows=mvRepRows(sh,MV.repq), head=sh.head||[], cols=sh.cols||[];
+    h+=`<div class="card">${mvSearch('repq','поиск по отчёту')}<div class="help" style="margin-top:6px">строк: ${rows.length}${sh.cut?' · в отчёте больше — полностью в 🖥 Полной версии':''}</div></div>`
+      +rows.slice(0,MV_LIM).map(r=>{ const c=(r||[]).map((v,j)=>mvCell(v,(cols[j]||{}).k));
+        return `<div class="card"><div class="it-a">${esc(c[0]||'—')}</div><div class="muted">${esc(head[0]||'')}</div>
+          <div style="margin-top:4px">${c.slice(1).map((v,j)=>v===''?'':`<div class="wl rp"><span class="l muted" title="${esc((cols[j+1]||{}).tip||'')}">${esc(head[j+1]||'')}</span><span class="r">${esc(v)}</span></div>`).join('')}</div></div>`; }).join('')
+      +(rows.length?'':'<div class="card muted">Ничего не найдено</div>')+mvMore(rows.length);
+  } else if(!T.error) h+='<div class="card muted">Пусто</div>';
+  box.innerHTML=mvTop('reports')+h;
+}
+</script>
+
+<script>
+// ===== Страница: хранилище, листы, обмен =====
+const PAGES={stock:'🏬 Склад',wb:'🧾 Накладные',kp:'📊 КП',sync:'🔄 Обмен',pj:'📁 Проекты / Хаб',fin:'💰 Финансы и оплаты',inv:'📦 Инвойсы и поставки',rep:'📈 Отчёты'};
+let BASE=null, OPS=[], EXPORTED=new Set(), STORE_OK=false, ST=null, CUR='stock';
+let KPD=null;           // черновик КП: {projectId,isNew,name,contractor,rows}
+let STOCK_Q='', STOCK_P='', SW={p:'',out:'',in:''};
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const jsq=s=>String(s==null?'':s).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+const fmt=n=>Math.round(n||0).toString().replace(/\B(?=(\d{3})+(?!\d))/g,' ');
+const pad=n=>String(n).padStart(2,'0');
+const todayLocal=()=>{ const d=new Date(); return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()); };
+const dmy=iso=>{ const m=String(iso||'').match(/^(\d{4})-(\d\d)-(\d\d)/); return m?m[3]+'.'+m[2]+'.'+m[1].slice(2):''; };
+function toast(msg,ms){ const t=$('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove('show'),ms||2600); }
+function newOpId(){ const a='abcdefghijklmnopqrstuvwxyz0123456789'; let r=''; for(let i=0;i<4;i++) r+=a[Math.floor(Math.random()*36)]; return 'op'+Date.now().toString(36)+r; }
+
+// Хранилище: проба при старте; нет — работа в памяти и красная плашка
+function probeStore(){ try{ localStorage.setItem('wkm_probe','1'); const ok=localStorage.getItem('wkm_probe')==='1'; localStorage.removeItem('wkm_probe'); return ok; }catch(e){ return false; } }
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function persist(){
+  if(!STORE_OK) return;
+  try{
+    localStorage.setItem('wkm_base',BASE?JSON.stringify(Object.assign({},BASE,{views:undefined})):'');   // views — отдельно, ниже
+    localStorage.setItem('wkm_ops',JSON.stringify(OPS));
+    localStorage.setItem('wkm_exported',JSON.stringify([...EXPORTED]));
+  }catch(e){ STORE_OK=false; document.body.classList.add('no-store'); toast('⚠ Не удалось сохранить на телефоне — выгрузите изменения'); return; }
+  // Экраны просмотра — только показ: не влезли в хранилище — не беда (журнал цел), вернутся со следующей загрузкой с сайта
+  try{ localStorage.setItem('wkm_views',BASE&&BASE.views?JSON.stringify(BASE.views):''); }catch(e){ try{ localStorage.removeItem('wkm_views'); }catch(x){} }
+}
+function boot(){
+  STORE_OK=probeStore();
+  document.body.classList.toggle('no-store',!STORE_OK);
+  if(STORE_OK){
+    try{ const b=lsGet('wkm_base'); BASE=b?JSON.parse(b):null; }catch(e){ BASE=null; }
+    if(BASE&&!BASE.views) try{ const v=lsGet('wkm_views'); if(v) BASE.views=JSON.parse(v); }catch(e){}
+    try{ OPS=JSON.parse(lsGet('wkm_ops')||'[]'); if(!Array.isArray(OPS)) OPS=[]; }catch(e){ OPS=[]; }
+    try{ EXPORTED=new Set(JSON.parse(lsGet('wkm_exported')||'[]')); }catch(e){ EXPORTED=new Set(); }
+  }
+  recalc(); go(CUR,true);
+  if(lsGet('wkm_web_pw')&&/^https?:$/.test(location.protocol)) webRefresh(true);   // пароль запомнен — данные сами; ошибка — прежняя база и метка
+}
+function recalc(){ ST=BASE?mobApply(BASE,OPS):null; renderHeader(); }
+function renderHeader(){
+  const el=$('data-info');
+  if(!BASE){ el.textContent='данных нет'; el.className=''; el.title='Загрузите файл данных на листе 🔄 Обмен'; }
+  else { const d=new Date(BASE.savedAt); const ok=!isNaN(d);
+    el.textContent='данные на '+(ok?pad(d.getDate())+'.'+pad(d.getMonth()+1)+' '+pad(d.getHours())+':'+pad(d.getMinutes()):'?')+(BASE.firm?' · '+BASE.firm:'');
+    const old=!ok||Date.now()-d.getTime()>86400000;
+    el.className=old?'old':''; el.title=old?'данные старые — загрузите свежие с компьютера':'Когда компьютер выгрузил эти данные'; }
+  const wl=webLabel(); if(wl){ el.textContent=(BASE?el.textContent+' · ':'')+wl; el.className='old'; }
+  const nb=ST?OPS.filter(o=>ST.bad[o.id]).length:0, c=$('ops-cnt');
+  c.style.display=OPS.length?'':'none'; c.textContent=OPS.length+(nb?' · ⚠'+nb:'');
+}
+function sideToggle(on){ document.body.classList.toggle('side-open',on); }
+function go(p,keepSide){
+  CUR=p; if(!keepSide) sideToggle(false);
+  document.querySelectorAll('.page').forEach(x=>x.classList.toggle('on',x.id==='page-'+p));
+  document.querySelectorAll('#side button[data-page]').forEach(b=>b.classList.toggle('on',b.dataset.page===p));
+  $('page-title').textContent=PAGES[p];
+  render();
+}
+function render(){
+  const box=$('page-'+CUR);
+  if(!BASE&&CUR!=='sync'){ box.innerHTML='<div class="card empty"><p>Сначала загрузите данные с компьютера</p><button class="btn main" onclick="go(\'sync\')" title="Перейти на лист Обмен">🔄 К обмену</button></div>'; return; }
+  ({stock:renderStock,wb:renderWb,kp:renderKp,sync:renderSync,pj:renderPj,fin:renderFin,inv:renderInv,rep:renderRep})[CUR](box);
+}
+const projName=id=>((ST&&ST.projects.find(p=>p.id===id))||{}).name||'— без проекта —';
+const homeProj=()=>_whHomeIn(ST.projects)||null;
+
+// Новое действие: проверяется тем же mobApply — отказ ⇒ тост с причиной, журнал не тронут
+function addOp(o){
+  o.id=newOpId(); o.ts=new Date().toISOString(); o.date=todayLocal();
+  const s=mobApply(BASE,OPS.concat([o]));
+  if(s.bad[o.id]){ toast('⛔ '+s.bad[o.id]); return false; }
+  OPS.push(o); persist(); recalc(); render(); return true;
+}
+
+// ===== 🏬 Склад =====
+function renderStock(box){
+  const ids=new Set(ST.warehouse.filter(w=>!w.virtual).map(w=>w.projectId));
+  const projs=ST.projects.filter(p=>ids.has(p.id)).sort((a,b)=>String(a.name).localeCompare(String(b.name)));
+  const q=artKey(STOCK_Q), ql=STOCK_Q.trim().toLowerCase();
+  let rows=ST.warehouse.filter(w=>!w.virtual&&((w.stockQty||0)>0||(w.deliveredQty||0)>0)&&(!STOCK_P||w.projectId===STOCK_P)
+    &&(!ql||artKey(w.article).includes(q)||String(w.name||(findItem(w.article)||{}).name||'').toLowerCase().includes(ql)));
+  const total=rows.length; rows=rows.slice(0,60);
+  const list=rows.map(w=>{ const nm=w.name||(findItem(w.article)||{}).name||'';
+    return `<div class="card"><div class="it-h"><span>${esc(projName(w.projectId))}</span>${w.rek?'<span class="tag soft">рекламация</span>':''}</div>
+      <div class="it-a">${esc(w.article)}</div><div class="it-n">${esc(nm)}</div>
+      <div class="row"><span class="qtys">склад <b>${w.stockQty||0}</b> · выдано <b>${w.deliveredQty||0}</b>${w.reclamationQty?' · рекл. '+w.reclamationQty:''}</span></div>
+      <div class="row"><input type="number" inputmode="numeric" min="1" id="q-${esc(w.id)}" placeholder="кол." title="Количество">
+        <button class="btn" onclick="whOp('issue','${jsq(w.id)}')" title="Отгрузить заказчику — попадёт в накладную">📤 Отгрузить</button>
+        <button class="ico" onclick="whOp('return','${jsq(w.id)}')" title="Возврат от заказчика — в свободный сток">📥</button>
+        <button class="ico" onclick="whOp('reclaim','${jsq(w.id)}')" title="Забрать брак по рекламации — документ «Р», строка «Забрали (брак)»">🔄</button></div></div>`; }).join('');
+  box.innerHTML=`<div class="card"><input class="full" id="st-q" placeholder="🔍 артикул или название" value="${esc(STOCK_Q)}" oninput="STOCK_Q=this.value;renderStockList()">
+    <div class="row"><select class="full" onchange="STOCK_P=this.value;render()" title="Проект">
+      <option value="">Все проекты</option>${projs.map(p=>`<option value="${esc(p.id)}" ${p.id===STOCK_P?'selected':''}>${esc(p.name)}</option>`).join('')}</select></div></div>
+    ${swapHtml()}
+    <div id="st-list">${list||'<div class="card muted">Ничего не найдено</div>'}${total>60?`<div class="help">Показано 60 из ${total} — уточните поиск</div>`:''}</div>`;
+}
+function renderStockList(){ const f=document.activeElement&&document.activeElement.id; render(); if(f==='st-q'){ const e=$('st-q'); e.focus(); e.setSelectionRange(e.value.length,e.value.length); } }
+function whOp(type,id){
+  const w=ST.warehouse.find(x=>x.id===id); if(!w) return;
+  const q=parseInt(($('q-'+id)||{}).value)||0; if(q<=0){ toast('Введите количество'); return; }
+  if(type==='reclaim'&&!confirm('Забрать брак по рекламации: '+q+' шт '+w.article+'?')) return;
+  if(addOp({type,whId:w.id,projectId:w.projectId||'',article:w.article,qty:q}))
+    toast(type==='issue'?'📤 Отгружено '+q+' шт → 🧾 накладная':type==='return'?'📥 Возврат '+q+' шт → свободный сток':'🔄 Брак забран по рекламации: '+q+' шт → документ «Р»');
+}
+// 🔁 Замена: «отдал» — свободный сток и резерв проекта, «забрал» — выданное проекту (как _swapFormRows компьютера)
+function swapHtml(){
+  const home=homeProj();
+  const ids=new Set(ST.warehouse.filter(w=>!w.virtual&&(w.deliveredQty||0)>0).map(w=>w.projectId));
+  const projs=ST.projects.filter(p=>ids.has(p.id)&&(!home||p.id!==home.id));
+  const pid=SW.p;
+  const outs=pid?ST.warehouse.filter(w=>!w.virtual&&!w.rek&&(w.stockQty||0)>0&&(w.projectId===pid||(home&&w.projectId===home.id))):[];
+  const ins=pid?ST.warehouse.filter(w=>!w.virtual&&!w.rek&&!w.rkg&&(w.deliveredQty||0)>0&&w.projectId===pid):[];
+  const nm=w=>String(w.name||(findItem(w.article)||{}).name||'').slice(0,30);
+  const opt=(list,cur,f)=>'<option value="">—</option>'+list.map(w=>`<option value="${esc(w.id)}" ${w.id===cur?'selected':''}>${esc(w.article)} · ${esc(nm(w))} · ${f(w)}</option>`).join('');
+  return `<details class="card" ${SW.open?'open':''} ontoggle="SW.open=this.open"><summary>🔁 Замена на объекте</summary>
+    <div class="help" style="margin:6px 0">Отдал на объект одно, забрал другое. Договор, КП и накладные не меняются.</div>
+    <select class="full" onchange="SW.p=this.value;SW.out='';SW.in='';render()" title="Проект"><option value="">— проект —</option>
+      ${projs.map(p=>`<option value="${esc(p.id)}" ${p.id===pid?'selected':''}>${esc(p.name)}</option>`).join('')}</select>
+    <div class="row"><span class="muted">отдал:</span></div>
+    <div class="row"><select class="full" id="sw-out" onchange="SW.out=this.value" title="Что отдал на объект">${opt(outs,SW.out,w=>(home&&w.projectId===home.id?'🆓 сток ':'🔒 резерв ')+(w.stockQty||0))}</select></div>
+    <div class="row"><input type="number" inputmode="numeric" min="1" id="sw-oq" style="width:170px" placeholder="сколько" title="Сколько отдал"></div>
+    <div class="row"><span class="muted">забрал:</span></div>
+    <div class="row"><select class="full" id="sw-in" onchange="SW.in=this.value" title="Что забрал с объекта">${opt(ins,SW.in,w=>'выдано '+(w.deliveredQty||0))}</select></div>
+    <div class="row"><input type="number" inputmode="numeric" min="1" id="sw-iq" style="width:170px" placeholder="сколько (= отдал)" title="Сколько забрал; пусто — столько же"></div>
+    <div class="row"><button class="btn main" onclick="swapSubmit()" title="Записать замену в журнал телефона">🔁 Записать замену</button></div></details>`;
+}
+function swapSubmit(){
+  const oq=parseInt($('sw-oq').value)||0, iqRaw=$('sw-iq').value.trim();
+  const o={type:'swap',projectId:SW.p,outId:$('sw-out').value,outQty:oq,inId:$('sw-in').value,inQty:iqRaw===''?oq:(parseInt(iqRaw)||0)};
+  const c=_swapCheckIn(o,ST.projects,ST.warehouse); if(!c.ok){ toast(c.msg); return; }
+  if(!confirm('🔁 Замена по проекту «'+c.p.name+'»:\nотдал: '+c.out.article+' — '+c.oq+' шт\nзабрал: '+c.inn.article+' — '+c.iq+' шт\n\nЗаписать?')) return;
+  o.outArticle=c.out.article; o.inArticle=c.inn.article; o.outQty=c.oq; o.inQty=c.iq;
+  if(addOp(o)){ SW.out=''; SW.in=''; render(); toast('🔁 '+o.outArticle+' '+o.outQty+' шт → объект, '+o.inArticle+' '+o.inQty+' шт → сток'); }
+}
+
+// ===== 🧾 Накладные =====
+function wbCard(wb,mine){
+  const p=ST.projects.find(x=>x.id===wb.projectId);
+  let sum=0, noPrice=0;
+  const items=(wb.items||[]).map(it=>{ const pr=(it.priceUzs!=null&&it.priceUzs!=='')?+it.priceUzs:(it.price!=null?+it.price:null);
+    if(pr==null) noPrice++; else sum+=pr*(+it.qty||0);
+    return `<div class="wl"><span class="l"><b>${esc(it.article)}</b> ${esc(it.name||'')}</span><span class="r">${+it.qty||0} × ${pr==null?'<span class="tag soft">без цены</span>':fmt(pr)+'<br>= '+fmt(pr*(+it.qty||0))}</span></div>`; }).join('');
+  return `<div class="card"><div class="it-h"><span>${esc(dmy(wb.date))}</span>${mine?'<span class="tag soft">с телефона</span>':''}</div>
+    <h3>${esc(wb.number||'без номера')}${(wb.type||'')==='rek'?' · рекламация (брак забран)':((wb.type||'')==='ret'?' · возврат':'')}</h3>
+    <div class="muted">${esc(wb.noContract?(wb.recipient||'без договора'):(p?p.name:'— без проекта —'))}</div>
+    ${mine?'<div class="help">номер окончательный — на компьютере</div>':''}
+    <div style="margin-top:6px">${items||'<div class="muted">позиций нет</div>'}</div>
+    <div class="tot"><span>Итого${noPrice?' (без цены: '+noPrice+')':''}</span><span>${fmt(sum)} сум</span></div></div>`;
+}
+function renderWb(box){
+  const byDate=(a,b)=>String(b.date).localeCompare(String(a.date));
+  const mine=ST.waybills.filter(w=>w.phone).sort(byDate);
+  const pc=ST.waybills.filter(w=>!w.phone).sort(byDate).slice(0,20);
+  box.innerHTML=`<div class="muted" style="margin:0 2px 6px">С телефона</div>${mine.map(w=>wbCard(w,true)).join('')||'<div class="card muted">На телефоне накладных ещё нет — отгрузите со Склада</div>'}
+    <div class="muted" style="margin:12px 2px 6px">Последние с компьютера — только просмотр</div>${pc.map(w=>wbCard(w,false)).join('')||'<div class="card muted">Нет</div>'}`;
+}
+
+// ===== 📊 КП =====
+function kpProjects(){ return ST.projects.filter(p=>!p.closed&&!(p.kpFixed&&p.kpFixed.fixed)&&!isWarehouse(p)); }
+function kpOpen(pid){
+  if(!pid){ KPD=null; render(); return; }
+  const p=ST.projects.find(x=>x.id===pid); if(!p) return;
+  KPD={projectId:p.id,name:p.name,contractor:p.contractor||'',rows:JSON.parse(JSON.stringify(p.kpRows||[])),dirty:false};
+  render();
+}
+function kpNew(){
+  const n=$('kp-nn').value.trim(), c=$('kp-nc').value.trim();
+  if(!n){ toast('Впишите название проекта'); return; }
+  KPD={projectId:'p'+Date.now(),name:n,contractor:c,rows:[],dirty:true,fresh:true}; render();
+}
+function kpK(){ const p=ST.projects.find(x=>x.id===KPD.projectId); return p?projKonst(p):(BASE.defaultKonst||{}); }
+function kpAdd(article){
+  const it=findItem(article); if(!it){ toast('⛔ '+article+' — нет в каталоге'); return; }
+  const row={article:it.article,desc:it.desc||'',name:it.name||'',qty:1,priceEur:it.price_eur,nds:0,priceEurNds:0,total:0};
+  KPD.rows.push(row); KPD.dirty=true; KPD.q=''; render();
+}
+function kpSearchKey(e){ if(e.key!=='Enter') return; const v=e.target.value.trim(); if(!v) return;
+  const it=findItem(v); if(it) kpAdd(it.article); else toast('⛔ '+v+' — нет в каталоге'); }
+function kpSearch(v){ KPD.q=v; const box=$('kp-res'); if(!box) return; const q=v.trim().toLowerCase(); if(q.length<2){ box.innerHTML=''; return; }
+  const res=MOB_CAT.filter(i=>String(i.article||'').toLowerCase().includes(q)||String(i.name||'').toLowerCase().includes(q)).slice(0,20);
+  box.innerHTML=res.map(i=>`<button onclick="kpAdd('${jsq(i.article)}')" title="Добавить в КП"><b>${esc(i.article)}</b> ${esc(i.name||'')}</button>`).join('')||'<div class="help">нет в каталоге</div>'; }
+function kpQty(i,v){ KPD.rows[i].qty=Math.max(1,parseInt(v)||1); KPD.dirty=true; render(); }
+function kpPrice(i,v){ const raw=String(v).replace(/\s/g,'').replace(',','.'); KPD.rows[i].priceManual=raw===''?'':parseFloat(raw); KPD.dirty=true; render(); }
+function kpDel(i){ KPD.rows.splice(i,1); KPD.dirty=true; render(); }
+function kpSave(){
+  if(!KPD) return;
+  const pid=KPD.projectId, inBase=((BASE.data&&BASE.data.wk_projects)||[]).some(p=>p.id===pid);
+  const idx=OPS.findIndex(o=>o.type==='kp'&&o.projectId===pid&&!EXPORTED.has(o.id));
+  const others=OPS.filter((o,i)=>i!==idx);
+  const prev=mobApply(BASE,others).projects.find(p=>p.id===pid)||null;   // строки, с которых начата эта правка
+  const isNew=!inBase&&!prev;
+  const o={type:'kp',projectId:pid,isNew,name:KPD.name,contractor:KPD.contractor,baseRows:isNew?null:JSON.parse(JSON.stringify((prev&&prev.kpRows)||[])),
+    rows:JSON.parse(JSON.stringify(KPD.rows))};
+  o.id=idx>=0?OPS[idx].id:newOpId(); o.ts=new Date().toISOString(); o.date=todayLocal();
+  const test=idx>=0?OPS.map((x,i)=>i===idx?o:x):OPS.concat([o]);
+  const s=mobApply(BASE,test); if(s.bad[o.id]){ toast('⛔ '+s.bad[o.id]); return; }
+  OPS=test; KPD.dirty=false; KPD.fresh=false; persist(); recalc(); render(); toast('💾 КП сохранено в журнал');
+}
+function renderKp(box){
+  if(!KPD){
+    const list=kpProjects().sort((a,b)=>String(a.name).localeCompare(String(b.name)));
+    box.innerHTML=`<div class="card"><h3>+ Новый проект</h3><input class="full" id="kp-nn" placeholder="Название проекта">
+      <div class="row"><input class="full" id="kp-nc" placeholder="Контрагент"></div>
+      <div class="row"><button class="btn main" onclick="kpNew()" title="Начать КП нового проекта">+ Новый проект</button></div></div>
+      <div class="card"><h3>Проекты без зафиксированного КП</h3>${list.map(p=>`<button class="btn" style="margin:0 6px 6px 0" onclick="kpOpen('${jsq(p.id)}')" title="Открыть КП проекта">${esc(p.name)}</button>`).join('')||'<div class="muted">Нет — у закрытых и зафиксированных КП правится на компьютере</div>'}</div>`;
+    return;
+  }
+  const k=kpK(), rows=KPD.rows, tot=_rsTotals(rows);
+  let sum=0;
+  const html=rows.map((r,i)=>{ const c=calcRsRowPrices(r,rows,k,tot); sum+=c.total;
+    return `<div class="kp-r"><div class="it-a">${esc(r.article)}</div><div class="it-n">${esc(r.name||r.desc||'')}</div>
+      <div class="row"><input type="number" inputmode="numeric" min="1" value="${r.qty||1}" onchange="kpQty(${i},this.value)" title="Количество">
+      <input type="text" inputmode="numeric" style="width:120px" class="${c.manual?'manual':''}" value="${fmt(c.sNds)}" onchange="kpPrice(${i},this.value)" title="Цена с НДС за шт — можно вписать вручную">
+      ${c.manual?`<button class="ico" onclick="kpPrice(${i},'')" title="Вернуть авто-расчёт цены">↺</button>`:''}
+      <button class="ico" onclick="kpDel(${i})" title="Удалить позицию">✕</button></div>
+      <div class="help">сумма ${fmt(c.total)} сум</div></div>`; }).join('');
+  box.innerHTML=`<div class="card"><div class="row" style="justify-content:space-between"><h3 style="margin:0">${esc(KPD.name)}</h3>
+      <button class="btn" onclick="kpClose()" title="К списку проектов">← Проекты</button></div>
+    <div class="muted">${esc(KPD.contractor||'')}</div></div>
+    <div class="card"><input class="full" id="kp-q" placeholder="🔍 добавить: артикул или название" value="${esc(KPD.q||'')}" oninput="kpSearch(this.value)" onkeydown="kpSearchKey(event)">
+      <div class="res" id="kp-res"></div></div>
+    <div class="card">${html||'<div class="muted">Позиций нет — найдите артикул в каталоге выше</div>'}
+      <div class="tot"><span>Итого с НДС</span><span>${fmt(sum)} сум</span></div></div>
+    <div class="row"><button class="btn main" onclick="kpSave()" ${KPD.dirty?'':'disabled'} title="Записать КП в журнал телефона">💾 Сохранить КП</button>
+      <span class="help">${KPD.dirty?'есть несохранённые правки':'сохранено'}</span></div>`;
+  if(KPD.q) kpSearch(KPD.q);
+}
+function kpClose(){ if(KPD&&KPD.dirty&&!confirm('КП не сохранено — выйти без сохранения?')) return; KPD=null; render(); }
+
+// ===== 🔄 Обмен =====
+function opText(o){
+  const pn=projName(o.projectId);
+  if(o.type==='issue') return '📤 Отгрузка '+o.article+' — '+o.qty+' шт · '+pn;
+  if(o.type==='return') return '📥 Возврат '+o.article+' — '+o.qty+' шт · '+pn;
+  if(o.type==='reclaim') return '🔄 Забрать брак по рекламации '+o.article+' — '+o.qty+' шт · '+pn;
+  if(o.type==='swap') return '🔁 Замена · '+pn+': отдал '+o.outArticle+' ×'+o.outQty+', забрал '+o.inArticle+' ×'+o.inQty;
+  if(o.type==='kp') return '📊 КП «'+(o.name||pn)+'»'+(o.isNew?' (новый проект)':'')+' — позиций '+(o.rows||[]).length;
+  return o.type;
+}
+function renderSync(box){
+  const fresh=OPS.filter(o=>!EXPORTED.has(o.id)).length;
+  const firm=(BASE&&BASE.firm)||'<фирма>';
+  const ops=OPS.map(o=>{ const bad=ST&&ST.bad[o.id];
+    return `<div class="op ${bad?'bad':''}"><div class="t">${esc(opText(o))}<div class="help">${esc(dmy(o.date))}${EXPORTED.has(o.id)?' · выгружено':''}${bad?' · ⚠ '+esc(bad):''}</div></div>
+      <button class="ico" onclick="opCancel('${jsq(o.id)}')" title="Отменить действие">✕</button></div>`; }).join('');
+  const rem=!!lsGet('wkm_web_pw');
+  box.innerHTML=`<div class="card"><h3>🌐 Из интернета</h3>
+      <div class="muted">${BASE?'Данные на '+esc(baseWhen()):'Данных ещё нет'}${webLabel()?' · <span class="tag '+(WEB_LAST.err==='PENDING'?'soft':'alert')+'">'+esc(webLabel())+'</span>':''}</div>
+      ${rem?`<div class="row"><span class="muted">Пароль запомнен на этом телефоне</span><button class="btn" onclick="webForget()" title="Забыть пароль на этом телефоне">Забыть</button></div>`:''}
+      <div class="row"><input class="full" type="password" id="web-pw" placeholder="${rem?'Новый пароль — если сменился':'Пароль телефона'}" autocomplete="current-password" value="${esc(WEB_PW)}" oninput="WEB_PW=this.value" onkeydown="if(event.key==='Enter')webRefresh()" title="Пароль телефона — его задаёт владелец в ImportDesk"></div>
+      <div class="row"><label class="muted"><input type="checkbox" id="web-rem" ${WEB_REM?'checked':''} onchange="WEB_REM=this.checked" title="Запомнить пароль на этом телефоне"> запомнить на этом телефоне</label></div>
+      <div class="row"><button class="btn main" id="web-go" onclick="webRefresh()" ${WEB_BUSY?'disabled':''} title="Загрузить свежие данные с сайта">${WEB_BUSY?'⏳ Загрузка…':'↻ Обновить'}</button></div></div>
+    <div class="card"><h3>📥 Данные с компьютера — файлом</h3>
+      <div class="muted">${BASE?'Загружено: '+esc(($('data-info')||{}).textContent||''):'Данных ещё нет'}</div>
+      <div class="row"><button class="btn main" onclick="$('file-in').click()" title="Выбрать файл данные_для_телефона.json">📥 Загрузить данные</button></div>
+      <div class="help" style="margin-top:6px">Файл «данные_для_телефона.json» из папки ${esc(firm)}/Телефон</div></div>
+    <div class="card"><h3>Действия на телефоне (${OPS.length})</h3>${ops||'<div class="muted">Пока ничего</div>'}</div>
+    <div class="card"><h3>📤 Изменения — на компьютер</h3>
+      <div class="row"><button class="btn main" onclick="exportOps()" ${fresh?'':'disabled'} title="Сохранить файл с действиями телефона">📤 Выгрузить изменения</button>
+      ${!fresh&&OPS.length?'<button class="btn" onclick="exportOps()" title="Выгрузить все действия ещё раз">↻ Ещё раз</button>':''}</div>
+      <div class="help" style="margin-top:6px">${fresh?'новых действий: '+fresh:'нет новых изменений'}</div>
+      <div class="muted" style="margin-top:4px">Положите файл в папку ${esc(firm)}/Телефон на диске</div></div>`;
+}
+function opCancel(id){
+  const o=OPS.find(x=>x.id===id); if(!o) return;
+  if(!confirm('Отменить: '+opText(o)+'?'+(EXPORTED.has(id)?'\n\nЭто действие уже выгружено — если файл уже на компьютере, отмените его там.':''))) return;
+  OPS=OPS.filter(x=>x.id!==id); EXPORTED.delete(id);
+  if(o.type==='kp'&&KPD&&KPD.projectId===o.projectId) KPD=null;
+  persist(); recalc(); render(); toast('Отменено');
+}
+function loadFile(inp){
+  const f=inp.files&&inp.files[0]; inp.value=''; if(!f) return;
+  const rd=new FileReader();
+  rd.onload=()=>{
+    let j=null; try{ j=JSON.parse(rd.result); }catch(e){}
+    if(KPD&&KPD.dirty&&!confirm('КП не сохранено — загрузить данные и выйти без сохранения?')) return;
+    let r=applyBase(j);
+    if(!r.ok&&r.err==='FIRM'){ if(!baseFirmAsk(j)) return; r=applyBase(j,{force:true}); }
+    if(!r.ok){ toast('⛔ Это не файл данных ImportDesk'); return; }
+    WEB_LAST=null; renderHeader();
+    toast('📥 Данные загружены'+(r.done?' · проведено на компьютере: '+r.done:''));
+  };
+  rd.onerror=()=>toast('⛔ Файл не прочитан');
+  rd.readAsText(f);
+}
+// 🌐 Интернет: webRefresh/webLoad — блок mob-base. Незаконченная работа на листе — введённое в поля (кроме поиска и пароля): тихая загрузка её не стирает
+function mobUnfinished(){ return [...document.querySelectorAll('main input')].some(e=>e.type!=='checkbox'&&e.type!=='password'&&!/^(st-q|kp-q)$/.test(e.id)&&e.value.trim()!==''&&!e.closest('.kp-r')); }
+function baseWhen(){ const d=new Date(BASE&&BASE.savedAt); return isNaN(d)?'?':pad(d.getDate())+'.'+pad(d.getMonth()+1)+'.'+String(d.getFullYear()).slice(2)+' '+pad(d.getHours())+':'+pad(d.getMinutes()); }
+function webForget(){ try{ localStorage.removeItem('wkm_web_pw'); }catch(e){} WEB_PW=''; render(); toast('Пароль забыт'); }
+function exportOps(){
+  if(!BASE||!OPS.length) return;
+  const d=new Date(), name='с_телефона_'+todayLocal()+'_'+pad(d.getHours())+'-'+pad(d.getMinutes())+'.json';
+  const ops=OPS.slice();   // порядок журнала — тот же, в каком проигрывает mobApply
+  const text=JSON.stringify({app:'weltklasse-phone-ops',v:1,exportedAt:d.toISOString(),firm:BASE.firm||'',basedOn:BASE.savedAt||'',ops},null,1);
+  const mark=()=>{ ops.forEach(o=>EXPORTED.add(o.id)); persist(); render(); };
+  const download=()=>{ const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([text],{type:'application/json'})); a.download=name;
+    document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },1000); mark();
+    toast('📤 '+name+' — положите в '+(BASE.firm||'<фирма>')+'/Телефон',4000); };
+  let file=null; try{ file=new File([text],name,{type:'application/json'}); }catch(e){}
+  if(file&&navigator.canShare&&navigator.share&&navigator.canShare({files:[file]})){
+    navigator.share({files:[file],title:name}).then(()=>{ mark(); toast('📤 Отправлено: '+name); })
+      .catch(e=>{ if(!(e&&e.name==='AbortError')) download(); });
+  } else download();
+}
+boot();
+</script>
+</body>
+</html>
